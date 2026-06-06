@@ -120,20 +120,44 @@ document.addEventListener("click", (e) => {
 const heroTitle = document.querySelector(".hero-left h1");
 
 if (heroTitle) {
-    const originalHTML = heroTitle.innerHTML;
+    // Lấy text thuần (không lấy innerHTML để tránh hiển thị thẻ <br>)
+    const lines = ["Quách", "Đức Thiện"];
     heroTitle.innerHTML = "";
 
-    let i = 0;
+    // Tạo sẵn 2 text node tương ứng 2 dòng
+    const line1 = document.createTextNode("");
+    const br    = document.createElement("br");
+    const line2 = document.createTextNode("");
+
+    heroTitle.appendChild(line1);
+    heroTitle.appendChild(br);
+    heroTitle.appendChild(line2);
+
+    // Ẩn br cho đến khi dòng 1 xong
+    br.style.display = "none";
+
+    let charIndex = 0;
 
     function typeEffect() {
-        if (i < originalHTML.length) {
-            heroTitle.innerHTML += originalHTML.charAt(i);
-            i++;
-            setTimeout(typeEffect, 35);
+        const fullText  = lines[0] + "\n" + lines[1];
+        const flatChars = [...lines[0], "\n", ...lines[1]];
+
+        if (charIndex < flatChars.length) {
+            const ch = flatChars[charIndex];
+
+            if (ch === "\n") {
+                br.style.display = "";   // hiện <br>
+            } else if (charIndex < lines[0].length) {
+                line1.nodeValue += ch;
+            } else {
+                line2.nodeValue += ch;
+            }
+
+            charIndex++;
+            setTimeout(typeEffect, 40);
         }
     }
 
-    // Start after a short delay
     setTimeout(typeEffect, 500);
 }
 
