@@ -120,41 +120,26 @@ document.addEventListener("click", (e) => {
 const heroTitle = document.querySelector(".hero-left h1");
 
 if (heroTitle) {
-    // Lấy text thuần (không lấy innerHTML để tránh hiển thị thẻ <br>)
+    const spans = heroTitle.querySelectorAll("span");
     const lines = ["Quách", "Đức Thiện"];
-    heroTitle.innerHTML = "";
 
-    // Tạo sẵn 2 text node tương ứng 2 dòng
-    const line1 = document.createTextNode("");
-    const br    = document.createElement("br");
-    const line2 = document.createTextNode("");
+    // Clear nội dung ban đầu
+    spans.forEach(s => s.textContent = "");
 
-    heroTitle.appendChild(line1);
-    heroTitle.appendChild(br);
-    heroTitle.appendChild(line2);
-
-    // Ẩn br cho đến khi dòng 1 xong
-    br.style.display = "none";
-
+    let lineIndex = 0;
     let charIndex = 0;
 
     function typeEffect() {
-        const fullText  = lines[0] + "\n" + lines[1];
-        const flatChars = [...lines[0], "\n", ...lines[1]];
-
-        if (charIndex < flatChars.length) {
-            const ch = flatChars[charIndex];
-
-            if (ch === "\n") {
-                br.style.display = "";   // hiện <br>
-            } else if (charIndex < lines[0].length) {
-                line1.nodeValue += ch;
+        if (lineIndex < lines.length) {
+            if (charIndex < lines[lineIndex].length) {
+                spans[lineIndex].textContent += lines[lineIndex][charIndex];
+                charIndex++;
+                setTimeout(typeEffect, 40);
             } else {
-                line2.nodeValue += ch;
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeEffect, 120);
             }
-
-            charIndex++;
-            setTimeout(typeEffect, 40);
         }
     }
 
