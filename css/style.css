@@ -126,7 +126,7 @@ body {
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 30px;
     z-index: 2;
 }
@@ -215,6 +215,35 @@ body {
     background: var(--primary);
     color: white;
     transform: translateY(-2px);
+}
+
+/* Hero info list inside card */
+.hero-info-list {
+    list-style: none;
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.hero-info-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+.hero-info-list span {
+    color: var(--gray);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.hero-info-list strong {
+    font-size: 12px;
+    color: var(--dark);
+    text-align: right;
+    word-break: break-all;
 }
 
 /* Hero Middle */
@@ -326,6 +355,10 @@ section {
 .about-content {
     max-width: 1000px;
     margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
 }
 
 .about-text {
@@ -353,6 +386,68 @@ section {
 
 .about-text li::marker {
     color: var(--primary);
+}
+
+/* About Info Panel */
+.about-info {
+    background: white;
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.about-info h3 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d8eadf;
+}
+
+.hobby-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.hobby-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: #f6f4ee;
+    border-radius: 14px;
+    transition: background .2s, transform .2s;
+}
+
+.hobby-item:hover {
+    background: #d8eadf;
+    transform: translateX(4px);
+}
+
+.hobby-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.hobby-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.hobby-item p {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =========================
