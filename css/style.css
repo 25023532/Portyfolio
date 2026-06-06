@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
 /* =========================
    RESET
 ========================= */
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+/* =========================
+   VARIABLES
+========================= */
 
 :root {
     --primary:       #2f6f4f;
@@ -19,6 +25,10 @@
     --shadow:        0 10px 30px rgba(0, 0, 0, .08);
     --radius:        24px;
 }
+
+/* =========================
+   BASE
+========================= */
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -53,6 +63,7 @@ body {
     font-weight: 700;
     color: var(--primary);
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .nav-links {
@@ -69,6 +80,7 @@ body {
     transition: color .3s;
     position: relative;
     padding-bottom: 4px;
+    cursor: pointer;
 }
 
 .nav-links a::after {
@@ -98,6 +110,118 @@ body {
     font-size: 25px;
     cursor: pointer;
     color: var(--primary);
+    background: none;
+    border: none;
+}
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+.page {
+    display: none;
+    animation: fadeUp .45s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 100px 80px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header span {
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    margin-top: 15px;
+    color: var(--dark);
+    line-height: 1.15;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    background: rgba(255, 255, 255, .92);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+    text-decoration: none;
+    background: var(--primary);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background .3s, transform .2s;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    text-decoration: none;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all .3s;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* =========================
@@ -106,7 +230,6 @@ body {
 
 .hero {
     min-height: 100vh;
-    /* Fallback gradient nếu không có ảnh nền */
     background: linear-gradient(135deg, #e8f5ee 0%, #d4ede0 50%, #c0e0cc 100%);
     /* Bỏ comment dòng dưới và thêm ảnh vào thư mục images/ */
     /* background: url("../images/robot-bg.jpg") center/cover no-repeat; */
@@ -131,16 +254,7 @@ body {
     z-index: 2;
 }
 
-.card {
-    background: rgba(255, 255, 255, .92);
-    backdrop-filter: blur(12px);
-    border-radius: var(--radius);
-    padding: 30px;
-    box-shadow: var(--shadow);
-}
-
-/* Hero Left */
-
+/* Hero Tag */
 .hero-tag {
     display: inline-block;
     padding: 10px 20px;
@@ -153,6 +267,7 @@ body {
     margin-bottom: 25px;
 }
 
+/* Hero Left */
 .hero-left h1 {
     font-family: 'Playfair Display', serif;
     font-size: 92px;
@@ -186,38 +301,7 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary {
-    text-decoration: none;
-    background: var(--primary);
-    color: white;
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: background .3s, transform .2s;
-}
-
-.btn-primary:hover {
-    background: var(--primary-light);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    text-decoration: none;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all .3s;
-}
-
-.btn-outline:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Hero info list inside card */
+/* Hero Info List */
 .hero-info-list {
     list-style: none;
     margin: 20px 0;
@@ -247,7 +331,6 @@ body {
 }
 
 /* Hero Middle */
-
 .hero-middle h2 {
     margin-bottom: 20px;
     color: var(--primary);
@@ -283,7 +366,6 @@ body {
 }
 
 /* Hero Right */
-
 .hero-right h2 {
     color: var(--primary);
     margin-bottom: 25px;
@@ -318,34 +400,6 @@ body {
     font-size: 13px;
     color: var(--dark);
     word-break: break-all;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-section {
-    padding: 100px 80px;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-header span {
-    color: var(--primary);
-    font-weight: 600;
-    letter-spacing: 3px;
-    font-size: 13px;
-}
-
-.section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    margin-top: 15px;
-    color: var(--dark);
-    line-height: 1.15;
 }
 
 /* =========================
@@ -388,7 +442,6 @@ section {
     color: var(--primary);
 }
 
-/* About Info Panel */
 .about-info {
     background: white;
     padding: 35px;
@@ -442,12 +495,6 @@ section {
     color: var(--gray);
     line-height: 1.5;
     margin: 0;
-}
-
-@media (max-width: 768px) {
-    .about-content {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* =========================
@@ -603,7 +650,6 @@ section {
     line-height: 1.8;
 }
 
-/* Highlighted card */
 .highlight {
     background: var(--primary);
     color: white;
@@ -617,7 +663,6 @@ section {
     color: rgba(255, 255, 255, .9);
 }
 
-/* Reflection */
 .reflection {
     background: white;
     padding: 45px;
@@ -715,19 +760,9 @@ footer p {
     font-size: 14px;
 }
 
-/* =========================
-   SCROLL ANIMATION
-========================= */
-
-.hidden {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity .8s ease, transform .8s ease;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
+footer a {
+    color: #a8d5b5;
+    text-decoration: none;
 }
 
 /* =========================
@@ -811,6 +846,10 @@ footer p {
     .btn-primary,
     .btn-outline {
         text-align: center;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
     }
 
     .reflection {
