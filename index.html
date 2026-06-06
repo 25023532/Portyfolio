@@ -1,394 +1,954 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Quách Đức Thiện</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Quách Đức Thiện</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    /* ═══════════════════════════════════
+       PAGE 1 — TRANG CHỦ
+    ═══════════════════════════════════ */
+    #page-home {
+      display: flex;
+      flex-direction: column;
+    }
 
-    <link rel="stylesheet" href="css/style.css">
+    .hero-banner {
+      height: 42vh;
+      background: linear-gradient(180deg,
+        rgba(11,15,26,0) 0%,
+        rgba(11,15,26,.7) 80%,
+        var(--bg) 100%),
+        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
+      position: relative;
+      flex-shrink: 0;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    .hero-banner .grid-bg { opacity: .15; }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    .hero-body {
+      padding: 60px 80px 80px;
+      max-width: 900px;
+    }
+
+    .hero-greeting {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .hero-name {
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-tagline {
+      font-weight: 700;
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: -.5px;
+    }
+
+    .hero-desc {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    .hero-desc a { color: var(--accent2); text-decoration: none; }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      padding: 40px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .info-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .info-item .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .info-item .value {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .interest-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 80px 60px;
+    }
+
+    .interest-chip {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 7px 16px;
+      border-radius: 50px;
+      background: rgba(14,165,233,.08);
+      color: var(--accent2);
+      border: 1px solid rgba(14,165,233,.2);
+    }
+
+    /* ═══════════════════════════════════
+       PAGE 2 — GIỚI THIỆU
+    ═══════════════════════════════════ */
+    .about-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .about-text-block h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .about-text-block p {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 2;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .about-text-block ul {
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    .about-text-block li {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-text-block li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hobby-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .hobby-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .hobby-item:hover {
+      border-color: rgba(0,229,160,.35);
+      transform: translateX(4px);
+    }
+
+    .hobby-icon { font-size: 26px; flex-shrink: 0; }
+
+    .hobby-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .hobby-desc {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════
+       PAGE 3 — HÀNH TRÌNH HỌC TẬP
+    ═══════════════════════════════════ */
+    .projects-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,229,160,.35);
+      transform: translateY(-6px);
+    }
+
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .project-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .project-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.85;
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1px solid rgba(0,229,160,.35);
+      border-radius: 6px;
+      align-self: flex-start;
+      transition: all .2s;
+    }
+
+    .project-link:hover {
+      background: rgba(0,229,160,.08);
+      border-color: var(--accent);
+    }
+
+    /* ═══════════════════════════════════
+       PAGE 4 — KỸ NĂNG
+    ═══════════════════════════════════ */
+    .skills-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color .25s, transform .25s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(0,229,160,.4);
+      transform: translateY(-6px);
+    }
+
+    .skill-icon {
+      font-size: 36px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .skill-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .skill-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ═══════════════════════════════════
+       PAGE 5 — TỔNG KẾT
+    ═══════════════════════════════════ */
+    .summary-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,229,160,.3);
+    }
+
+    .summary-card.highlight {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .summary-card.highlight .summary-card-title,
+    .summary-card.highlight .summary-card-desc { color: var(--bg); }
+
+    .summary-emoji { font-size: 44px; margin-bottom: 18px; }
+
+    .summary-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .summary-card-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .reflection-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 40px 44px;
+    }
+
+    .reflection-block h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: -.5px;
+    }
+
+    .reflection-block p {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 2;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .reflection-block p:last-child { margin-bottom: 0; }
+
+    /* ═══════════════════════════════════
+       FOOTER (shared)
+    ═══════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .site-footer p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ═══════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hero-body { padding: 40px 24px 40px; }
+      .hero-info-grid { padding: 32px 24px; }
+      .interest-row { padding: 0 24px 48px; }
+      .about-wrap, .projects-wrap, .skills-wrap, .summary-wrap { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 24px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
+<!-- ══════════════ NAVBAR ══════════════ -->
 <nav class="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home')">&#60; QDT /&#62;</a>
 
-    <div class="logo">
-        Quách Đức Thiện
-    </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home')"   id="nav-home">   <span class="num">01.</span> Trang chủ</a></li>
+    <li><a href="#" onclick="showPage('about')"  id="nav-about">  <span class="num">02.</span> Giới thiệu</a></li>
+    <li><a href="#" onclick="showPage('projects')" id="nav-projects"><span class="num">03.</span> Hành trình</a></li>
+    <li><a href="#" onclick="showPage('skills')" id="nav-skills"> <span class="num">04.</span> Kỹ năng</a></li>
+    <li><a href="#" onclick="showPage('summary')" id="nav-summary"><span class="num">05.</span> Tổng kết</a></li>
+  </ul>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Trang chủ</a></li>
-        <li><a href="#about">Giới thiệu</a></li>
-        <li><a href="#projects">Dự án</a></li>
-        <li><a href="#skills">Kỹ năng</a></li>
-        <li><a href="#summary">Tổng kết</a></li>
-    </ul>
-
-    <div class="menu-btn" id="menuBtn">
-        <i class="fa-solid fa-bars"></i>
-    </div>
-
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- ══════════════════════════════════════
+     PAGE 1 — TRANG CHỦ
+══════════════════════════════════════ -->
+<div class="page active" id="page-home">
 
-<section id="home" class="hero">
+  <div class="hero-banner">
+    <div class="grid-bg"></div>
+  </div>
 
-    <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <p class="hero-greeting">&#47;&#47; Xin chào, tôi là</p>
+    <h1 class="hero-name">Quách Đức<br><span>Thiện.</span></h1>
+    <p class="hero-tagline">Đam mê dẫn lối. Bền bỉ thực thi.</p>
+    <p class="hero-desc">
+      Sinh viên ngành Mạng máy tính và Truyền thông dữ liệu
+      (Computer Networking &amp; Data Communication).
+      Hiện đang theo học tại <a href="https://uet.vnu.edu.vn" target="_blank">VNU–UET</a>.
+      Một người có chiều sâu nội tâm, yêu thích sự tối giản
+      và luôn tò mò về thế giới xung quanh.
+    </p>
+    <div class="hero-btns">
+      <a class="btn btn-accent" href="#" onclick="showPage('projects')">
+        <i class="fa-solid fa-folder-open"></i> Xem hành trình
+      </a>
+      <a class="btn btn-outline" href="#" onclick="showPage('summary')">
+        <i class="fa-solid fa-flag-checkered"></i> Tổng kết
+      </a>
+    </div>
+  </div>
 
-    <div class="hero-container">
+  <div class="hero-info-grid">
+    <div class="info-item">
+      <div class="label">Họ &amp; Tên</div>
+      <div class="value">Quách Đức Thiện</div>
+    </div>
+    <div class="info-item">
+      <div class="label">Trường</div>
+      <div class="value">UET – VNU</div>
+    </div>
+    <div class="info-item">
+      <div class="label">Khóa</div>
+      <div class="value">K70I</div>
+    </div>
+    <div class="info-item">
+      <div class="label">Ngành</div>
+      <div class="value">MMT &amp; TTDL</div>
+    </div>
+    <div class="info-item">
+      <div class="label">Email</div>
+      <div class="value">25023532@vnu.edu.vn</div>
+    </div>
+    <div class="info-item">
+      <div class="label">MSSV</div>
+      <div class="value">25023532</div>
+    </div>
+  </div>
 
-        <div class="hero-left">
+  <div class="interest-row">
+    <span class="interest-chip">🌐 Network</span>
+    <span class="interest-chip">🔒 Security</span>
+    <span class="interest-chip">☁ Cloud</span>
+    <span class="interest-chip">🤖 AI / ML</span>
+    <span class="interest-chip">📡 IoT</span>
+    <span class="interest-chip">💻 Programming</span>
+  </div>
 
-            <span class="hero-tag">
-                PORTFOLIO CÁ NHÂN
-            </span>
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
 
-            <h1>
-                <span>Quách</span>
-                <span>Đức Thiện</span>
-            </h1>
+<!-- ══════════════════════════════════════
+     PAGE 2 — GIỚI THIỆU
+══════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="about-wrap">
 
-            <h3>
-                Sinh viên ngành Mạng máy tính và Truyền thông dữ liệu
-            </h3>
+    <p class="section-eyebrow">&#47;&#47; 02 — về tôi</p>
+    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;">
+      Giới thiệu<br><span style="color:var(--accent)">bản thân</span>
+    </h2>
 
-            <p>
-                Đam mê công nghệ mạng, bảo mật hệ thống,
-                trí tuệ nhân tạo và các giải pháp chuyển đổi số.
-                Luôn tìm kiếm cơ hội học hỏi và phát triển kỹ năng
-                để trở thành kỹ sư công nghệ chất lượng cao.
-            </p>
+    <div class="about-grid">
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn-primary">Xem dự án</a>
-                <a href="#summary" class="btn-outline">Tổng kết</a>
+      <div class="about-text-block">
+        <div class="card" style="margin-bottom:24px;">
+          <h3>Học vấn &amp; Định hướng</h3>
+          <p>
+            Tôi hiện đang theo học ngành <strong style="color:var(--accent)">Mạng máy tính và Truyền thông dữ liệu</strong>
+            tại Trường Đại học Công Nghệ – ĐHQGHN.
+          </p>
+          <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
+          <ul>
+            <li>Thiết kế và quản trị hệ thống mạng</li>
+            <li>An toàn thông tin và bảo mật</li>
+            <li>Điện toán đám mây</li>
+            <li>AI và ứng dụng công nghệ số</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Mục tiêu nghề nghiệp</h3>
+          <p>
+            Trở thành kỹ sư công nghệ có khả năng triển khai, vận hành
+            và bảo vệ các hệ thống thông tin hiện đại. Không ngừng học hỏi
+            để bắt kịp nhịp độ phát triển của công nghệ toàn cầu.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-eyebrow" style="margin-bottom:20px;">&#47;&#47; sở thích</p>
+        <div class="hobby-list">
+          <div class="hobby-item">
+            <span class="hobby-icon">📚</span>
+            <div>
+              <div class="hobby-title">Đọc truyện</div>
+              <div class="hobby-desc">Yêu thích khám phá các thể loại truyện phong phú</div>
             </div>
-
-        </div>
-
-        <div class="hero-middle card">
-
-            <h2>
-                <i class="fa-solid fa-user"></i>
-                Giới thiệu
-            </h2>
-
-            <p>
-                Tôi là sinh viên Trường Đại học Công Nghệ,
-                Đại học Quốc gia Hà Nội.
-            </p>
-
-            <p>
-                Chuyên ngành Mạng máy tính và Truyền thông dữ liệu,
-                yêu thích nghiên cứu về hệ thống mạng,
-                bảo mật và AI.
-            </p>
-
-            <ul class="hero-info-list">
-                <li><span>Họ tên</span><strong>Quách Đức Thiện</strong></li>
-                <li><span>Trường</span><strong>UET - VNU</strong></li>
-                <li><span>Khóa</span><strong>K70I</strong></li>
-                <li><span>Ngành</span><strong>MMT & TTDL</strong></li>
-                <li><span>Email</span><strong>25023532@vnu.edu.vn</strong></li>
-            </ul>
-
-            <div class="interest-grid">
-                <div>🌐 Network</div>
-                <div>🔒 Security</div>
-                <div>☁ Cloud</div>
-                <div>🤖 AI</div>
-                <div>📡 IoT</div>
-                <div>💻 Programming</div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">🎵</span>
+            <div>
+              <div class="hobby-title">Nghe nhạc</div>
+              <div class="hobby-desc">Âm nhạc giúp tôi thư giãn và tập trung hơn</div>
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= ABOUT ================= -->
-
-<section id="about">
-
-    <div class="section-header">
-        <span>VỀ TÔI</span>
-        <h2>Giới thiệu bản thân</h2>
-    </div>
-
-    <div class="about-content">
-
-        <div class="about-text">
-            <p>
-                Tôi hiện đang theo học ngành
-                <strong>Mạng máy tính và Truyền thông dữ liệu</strong>
-                tại Trường Đại học Công Nghệ – ĐHQGHN.
-            </p>
-            <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
-            <ul>
-                <li>Thiết kế và quản trị hệ thống mạng</li>
-                <li>An toàn thông tin và bảo mật</li>
-                <li>Điện toán đám mây</li>
-                <li>AI và ứng dụng công nghệ số</li>
-            </ul>
-            <p>
-                Mục tiêu của tôi là trở thành kỹ sư công nghệ có khả năng
-                triển khai, vận hành và bảo vệ các hệ thống thông tin hiện đại.
-            </p>
-        </div>
-
-        <div class="about-info">
-            <h3>Sở thích</h3>
-            <div class="hobby-list">
-                <div class="hobby-item">
-                    <span class="hobby-icon">📚</span>
-                    <div>
-                        <strong>Đọc truyện</strong>
-                        <p>Yêu thích khám phá các thể loại truyện phong phú</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <span class="hobby-icon">🎵</span>
-                    <div>
-                        <strong>Nghe nhạc</strong>
-                        <p>Âm nhạc giúp tôi thư giãn và tập trung hơn</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <span class="hobby-icon">🎮</span>
-                    <div>
-                        <strong>Chơi game</strong>
-                        <p>Rèn luyện tư duy chiến lược và phản xạ</p>
-                    </div>
-                </div>
-                <div class="hobby-item">
-                    <span class="hobby-icon">⚽</span>
-                    <div>
-                        <strong>Chơi thể thao</strong>
-                        <p>Duy trì sức khỏe và tinh thần thoải mái</p>
-                    </div>
-                </div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">🎮</span>
+            <div>
+              <div class="hobby-title">Chơi game</div>
+              <div class="hobby-desc">Rèn luyện tư duy chiến lược và phản xạ</div>
             </div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">⚽</span>
+            <div>
+              <div class="hobby-title">Chơi thể thao</div>
+              <div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div>
+            </div>
+          </div>
         </div>
+      </div>
 
     </div>
+  </div>
 
-</section>
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);">
+      Trang 02 / 05 — <a href="#" onclick="showPage('projects')">Tiếp theo: Hành trình →</a>
+    </p>
+  </footer>
+</div>
 
-<!-- ================= PROJECTS ================= -->
+<!-- ══════════════════════════════════════
+     PAGE 3 — HÀNH TRÌNH HỌC TẬP
+══════════════════════════════════════ -->
+<div class="page" id="page-projects">
+  <div class="projects-wrap">
 
-<section id="projects">
+    <p class="section-eyebrow">&#47;&#47; 03 — hành trình học tập</p>
+    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;">
+      Bài tập &amp;<br><span style="color:var(--accent)">Dự án học phần</span>
+    </h2>
 
-    <div class="section-header">
-        <span>DỰ ÁN</span>
-        <h2>Bài tập & Dự án học phần</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">// 01</div>
+        <h3 class="project-title">Thao tác cơ bản với tệp tin và thư mục</h3>
+        <p class="project-desc">
+          Thực hành toàn bộ quy trình quản lý tệp trên Windows: tạo thư mục
+          <em>ThucHanh_QuachDucThien</em>, tạo và đổi tên tệp .txt,
+          sao chép, di chuyển, xóa thông thường và xóa vĩnh viễn (Shift+Delete),
+          đồng thời khôi phục tệp từ Recycle Bin.
+        </p>
+        <a class="project-link" href="pdf/bai1.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 02</div>
+        <h3 class="project-title">Tìm kiếm và đánh giá thông tin học thuật</h3>
+        <p class="project-desc">
+          Thu thập và đánh giá 12 tài liệu về ứng dụng Machine Learning
+          trong An toàn thông tin từ IEEE, Elsevier, Springer và NIST.
+          Xây dựng bộ tiêu chí đánh giá 5 chiều và tổng hợp xu hướng nghiên cứu
+          IDS dựa trên Deep Learning giai đoạn 2020–2024.
+        </p>
+        <a class="project-link" href="pdf/bai2.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 03</div>
+        <h3 class="project-title">Viết Prompt hiệu quả cho các tác vụ học tập</h3>
+        <p class="project-desc">
+          So sánh thực nghiệm 3 mức prompt trên 3 tác vụ: tóm tắt tài liệu kỹ thuật,
+          giải thích thuật toán Quine-McCluskey và tạo bộ câu hỏi ôn tập theo thang Bloom.
+          Đúc kết 8 nguyên tắc viết prompt: Role Prompting, Chain-of-Thought, Few-shot,
+          Constraint Prompting.
+        </p>
+        <a class="project-link" href="pdf/bai3.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 04</div>
+        <h3 class="project-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+        <p class="project-desc">
+          Triển khai hệ sinh thái làm việc nhóm gồm 6 công cụ trong 1 tuần:
+          GitHub Projects (Kanban + Pull Request), Google Docs (Suggesting Mode),
+          IntelliJ IDEA (Git integration), Google Drive (phân quyền theo vai trò)
+          và Discord/Messenger. Ghi lại thách thức và cách giải quyết.
+        </p>
+        <a class="project-link" href="pdf/bai4.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 05</div>
+        <h3 class="project-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
+        <p class="project-desc">
+          Tạo infographic A3 về "AI trong Giáo dục" qua 3 giai đoạn:
+          ChatGPT (cấu trúc) + Gemini (kiểm chứng) + Claude (giọng văn);
+          DALL·E 3 và Stable Diffusion tạo hình ảnh;
+          Canva AI và Adobe Firefly thiết kế layout.
+          Thời gian giảm ~65% so với truyền thống.
+        </p>
+        <a class="project-link" href="pdf/bai5.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 06</div>
+        <h3 class="project-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
+        <p class="project-desc">
+          Phân tích chính sách sử dụng AI của ĐHQGHN và thực hành viết bài luận
+          về tác động AI đến thị trường lao động Việt Nam. Xây dựng 7 nguyên tắc cá nhân:
+          tư duy trước–AI sau, minh bạch tuyệt đối, kiểm chứng độc lập số liệu,
+          giữ giọng văn cá nhân.
+        </p>
+        <a class="project-link" href="pdf/bai6.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 07</div>
+        <h3 class="project-title">Phân tích tài liệu với trợ lý nghiên cứu AI</h3>
+        <p class="project-desc">
+          Sử dụng Elicit và Consensus để hệ thống hóa 5 bài báo khoa học về ứng dụng
+          Graphene trong pin năng lượng (Li-ion, Na-ion, siêu tụ điện). Phân tích điểm
+          thống nhất, sự khác biệt phương pháp và hạn chế tồn tại,
+          đề xuất hướng nghiên cứu tiếp theo.
+        </p>
+        <a class="project-link" href="pdf/bai7.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
     </div>
+  </div>
 
-    <div class="project-grid">
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);">
+      Trang 03 / 05 — <a href="#" onclick="showPage('skills')">Tiếp theo: Kỹ năng →</a>
+    </p>
+  </footer>
+</div>
 
-        <div class="project-card">
-            <span class="project-number">01</span>
-            <h3>Thao tác với tệp và thư mục</h3>
-            <p>
-                Thực hành tạo, sao chép, đổi tên,
-                di chuyển và quản lý thư mục trên Windows.
-            </p>
-            <a href="/Portyfolio/pdf/bai1.pdf" target="_blank">Xem PDF</a>
-        </div>
+<!-- ══════════════════════════════════════
+     PAGE 4 — KỸ NĂNG
+══════════════════════════════════════ -->
+<div class="page" id="page-skills">
+  <div class="skills-wrap">
 
-        <div class="project-card">
-            <span class="project-number">02</span>
-            <h3>Tìm kiếm học thuật</h3>
-            <p>
-                Khai thác Google Scholar, IEEE,
-                Springer và đánh giá nguồn học thuật.
-            </p>
-            <a href="/Portyfolio/pdf/bai2.pdf" target="_blank">Xem PDF</a>
-        </div>
-
-        <div class="project-card">
-            <span class="project-number">03</span>
-            <h3>Prompt Engineering</h3>
-            <p>
-                Thiết kế prompt hiệu quả cho học tập,
-                nghiên cứu và tạo nội dung bằng AI.
-            </p>
-            <a href="/Portyfolio/pdf/bai3.pdf" target="_blank">Xem PDF</a>
-        </div>
-
-        <div class="project-card">
-            <span class="project-number">04</span>
-            <h3>Hợp tác trực tuyến</h3>
-            <p>
-                Làm việc nhóm, quản lý tiến độ bằng Trello
-                và Google Workspace.
-            </p>
-            <a href="/Portyfolio/pdf/bai4.pdf" target="_blank">Xem PDF</a>
-        </div>
-
-        <div class="project-card">
-            <span class="project-number">05</span>
-            <h3>Sáng tạo nội dung với AI</h3>
-            <p>
-                Kết hợp ChatGPT, DALL-E và Canva AI
-                để xây dựng bài thuyết trình hoàn chỉnh.
-            </p>
-            <a href="/Portyfolio/pdf/bai5.pdf" target="_blank">Xem PDF</a>
-        </div>
-
-        <div class="project-card">
-            <span class="project-number">06</span>
-            <h3>AI có trách nhiệm</h3>
-            <p>
-                Nghiên cứu các nguyên tắc sử dụng AI
-                trong môi trường học thuật.
-            </p>
-            <a href="/Portyfolio/pdf/bai6.pdf" target="_blank">Xem PDF</a>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= SKILLS ================= -->
-
-<section id="skills">
-
-    <div class="section-header">
-        <span>KỸ NĂNG</span>
-        <h2>Kỹ năng đã học</h2>
-    </div>
+    <p class="section-eyebrow">&#47;&#47; 04 — kỹ năng</p>
+    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;">
+      Kỹ năng<br><span style="color:var(--accent)">đã học</span>
+    </h2>
 
     <div class="skills-grid">
 
-        <div class="skill-card">
-            <i class="fa-solid fa-folder-tree"></i>
-            <h3>Quản lý dữ liệu</h3>
-            <p>Tổ chức thư mục, quản lý tệp và dữ liệu khoa học, hiệu quả.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-folder-tree"></i></div>
+        <div class="skill-title">Quản lý dữ liệu</div>
+        <div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <h3>Tìm kiếm học thuật</h3>
-            <p>Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="skill-title">Tìm kiếm học thuật</div>
+        <div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-brain"></i>
-            <h3>Prompt Engineering</h3>
-            <p>Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+        <div class="skill-title">Prompt Engineering</div>
+        <div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-users"></i>
-            <h3>Làm việc nhóm</h3>
-            <p>Sử dụng Trello, Google Docs, Google Drive để cộng tác hiệu quả.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="skill-title">Làm việc nhóm</div>
+        <div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-robot"></i>
-            <h3>AI Tools</h3>
-            <p>ChatGPT, Claude, Gemini, DALL-E và Canva AI.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-robot"></i></div>
+        <div class="skill-title">AI Tools</div>
+        <div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <h3>An toàn thông tin</h3>
-            <p>Hiểu các nguyên tắc bảo mật, quyền riêng tư và AI có trách nhiệm.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="skill-title">An toàn thông tin</div>
+        <div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-network-wired"></i>
-            <h3>Mạng máy tính</h3>
-            <p>Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</p>
-        </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <div class="skill-title">Mạng máy tính</div>
+        <div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div>
+      </div>
 
-        <div class="skill-card">
-            <i class="fa-solid fa-code"></i>
-            <h3>Lập trình</h3>
-            <p>Java, C/C++, HTML, CSS, JavaScript cơ bản.</p>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="skill-title">Lập trình</div>
+        <div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);">
+      Trang 04 / 05 — <a href="#" onclick="showPage('summary')">Tiếp theo: Tổng kết →</a>
+    </p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 — TỔNG KẾT
+══════════════════════════════════════ -->
+<div class="page" id="page-summary">
+  <div class="summary-wrap">
+
+    <p class="section-eyebrow">&#47;&#47; 05 — tổng kết</p>
+    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;">
+      Hành trình<br><span style="color:var(--accent)">học tập</span>
+    </h2>
+
+    <div class="summary-cards">
+
+      <div class="summary-card">
+        <div class="summary-emoji">💡</div>
+        <div class="summary-card-title">Kiến thức đạt được</div>
+        <div class="summary-card-desc">
+          Nắm vững các kỹ năng số, tìm kiếm học thuật,
+          làm việc nhóm và ứng dụng AI trong học tập.
         </div>
+      </div>
+
+      <div class="summary-card highlight">
+        <div class="summary-emoji">🚀</div>
+        <div class="summary-card-title">Thành tựu nổi bật</div>
+        <div class="summary-card-desc">
+          Hoàn thành toàn bộ bài tập học phần,
+          xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-emoji">🔧</div>
+        <div class="summary-card-title">Thách thức</div>
+        <div class="summary-card-desc">
+          Học cách đánh giá nguồn tin, sử dụng AI có trách nhiệm
+          và phát triển tư duy phản biện.
+        </div>
+      </div>
 
     </div>
 
-</section>
-
-<!-- ================= SUMMARY ================= -->
-
-<section id="summary">
-
-    <div class="section-header">
-        <span>TỔNG KẾT</span>
-        <h2>Hành trình học tập</h2>
+    <div class="reflection-block">
+      <h3>Cảm nhận cá nhân</h3>
+      <p>
+        Học phần đã giúp tôi phát triển không chỉ các kỹ năng công nghệ
+        mà còn cả khả năng tự học, làm việc nhóm và tư duy phản biện.
+      </p>
+      <p>
+        Việc tiếp cận các công cụ AI hiện đại cho tôi góc nhìn mới về cách
+        công nghệ hỗ trợ học tập, nghiên cứu và phát triển nghề nghiệp trong tương lai.
+      </p>
+      <p>
+        Trong thời gian tới, tôi mong muốn tiếp tục nghiên cứu sâu hơn về mạng máy tính,
+        an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
+      </p>
     </div>
 
-    <div class="summary-grid">
+  </div>
 
-        <div class="summary-card">
-            <div class="summary-icon">💡</div>
-            <h3>Kiến thức đạt được</h3>
-            <p>
-                Nắm vững các kỹ năng số,
-                tìm kiếm học thuật, làm việc nhóm
-                và ứng dụng AI trong học tập.
-            </p>
-        </div>
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted);">UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
 
-        <div class="summary-card highlight">
-            <div class="summary-icon">🚀</div>
-            <h3>Thành tựu nổi bật</h3>
-            <p>
-                Hoàn thành toàn bộ bài tập học phần,
-                xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.
-            </p>
-        </div>
+<!-- ══════════════ SCRIPT ══════════════ -->
+<script>
+  const pages = ['home', 'about', 'projects', 'skills', 'summary'];
 
-        <div class="summary-card">
-            <div class="summary-icon">🔧</div>
-            <h3>Thách thức</h3>
-            <p>
-                Học cách đánh giá nguồn tin,
-                sử dụng AI có trách nhiệm
-                và phát triển tư duy phản biện.
-            </p>
-        </div>
+  function showPage(id) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.remove('active');
+      const link = document.getElementById('nav-' + p);
+      if (link) link.classList.remove('active');
+    });
 
-    </div>
+    document.getElementById('page-' + id).classList.add('active');
+    const activeLink = document.getElementById('nav-' + id);
+    if (activeLink) activeLink.classList.add('active');
 
-    <div class="reflection">
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        <h3>Cảm nhận cá nhân</h3>
+    // close mobile menu
+    document.getElementById('navLinks').classList.remove('open');
 
-        <p>
-            Học phần đã giúp tôi phát triển không chỉ
-            các kỹ năng công nghệ mà còn cả khả năng
-            tự học, làm việc nhóm và tư duy phản biện.
-        </p>
+    // update hash
+    history.pushState(null, '', '#' + id);
+  }
 
-        <p>
-            Việc tiếp cận các công cụ AI hiện đại cho tôi
-            góc nhìn mới về cách công nghệ hỗ trợ học tập,
-            nghiên cứu và phát triển nghề nghiệp trong tương lai.
-        </p>
+  // handle hash on load
+  function loadFromHash() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    const id = pages.includes(hash) ? hash : 'home';
+    showPage(id);
+  }
 
-        <p>
-            Trong thời gian tới, tôi mong muốn tiếp tục
-            nghiên cứu sâu hơn về mạng máy tính,
-            an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
-        </p>
+  window.addEventListener('load', loadFromHash);
+  window.addEventListener('hashchange', loadFromHash);
 
-    </div>
+  // mobile menu toggle
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
 
-</section>
+  // close menu on nav link click (mobile)
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
 
-<!-- ================= CONTACT ================= -->
-
-<section id="co
+</body>
+</html>
