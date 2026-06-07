@@ -37,7 +37,6 @@
       overflow-x: hidden; min-height: 100vh;
     }
 
-    /* ── NAVBAR ── */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-h); background: var(--white);
@@ -68,10 +67,8 @@
       color: var(--green); font-size: 1.2rem; cursor: pointer;
     }
 
-    /* ── PAGE WRAP ── */
     .page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
 
-    /* ── HERO ── */
     .hero {
       padding: 60px 52px 48px;
       display: grid;
@@ -101,19 +98,7 @@
       font-size: .9rem; color: var(--muted); line-height: 1.85; max-width: 480px;
       margin-bottom: 32px;
     }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px; border-radius: 50px;
-      font-size: .88rem; font-weight: 600; text-decoration: none;
-      transition: all .22s; cursor: pointer; border: none;
-    }
-    .btn-solid { background: var(--green); color: var(--white); }
-    .btn-solid:hover { background: var(--green-dark); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
-    .btn-outline:hover { background: var(--green-pale); transform: translateY(-2px); }
 
-    /* ── QUOTE CARD (right) ── */
     .quote-card {
       background: var(--green); border-radius: var(--r); padding: 32px 28px;
       color: var(--white);
@@ -128,7 +113,6 @@
     }
     .quote-author { font-size: .78rem; opacity: .65; font-style: italic; }
 
-    /* ── CONTENT ── */
     .content-area {
       padding: 0 52px 72px;
       max-width: 1100px; margin: 0 auto;
@@ -139,7 +123,6 @@
       color: var(--muted); margin-bottom: 16px;
     }
 
-    /* ── SUMMARY CARDS ── */
     .summary-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -160,9 +143,7 @@
       box-shadow: 0 12px 32px rgba(30,107,74,.12);
     }
     .summary-card:hover::after { transform: scaleX(1); }
-    .summary-card.highlight {
-      background: var(--green); border-color: var(--green);
-    }
+    .summary-card.highlight { background: var(--green); border-color: var(--green); }
     .summary-card.highlight .s-title { color: var(--white); }
     .summary-card.highlight .s-desc { color: rgba(255,255,255,.78); }
     .summary-card.highlight::after { background: var(--white); }
@@ -173,7 +154,6 @@
     }
     .s-desc { font-size: .82rem; line-height: 1.85; color: var(--muted); }
 
-    /* ── REFLECTION BLOCK ── */
     .reflection-block {
       background: var(--white); border: 1px solid var(--border);
       border-left: 4px solid var(--green);
@@ -194,42 +174,6 @@
     }
     .reflection-block p:last-child { margin-bottom: 0; }
 
-    /* ── NAV CARDS ── */
-    .nav-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px; margin-top: 16px;
-    }
-    .nav-card {
-      display: flex; align-items: center; gap: 16px;
-      padding: 20px 22px; background: var(--white);
-      border: 1px solid var(--border); border-radius: 14px;
-      text-decoration: none; transition: all .25s;
-      position: relative; overflow: hidden;
-    }
-    .nav-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: var(--green);
-      transform: scaleX(0); transform-origin: left; transition: transform .3s;
-    }
-    .nav-card:hover {
-      border-color: var(--green); transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(30,107,74,.12);
-    }
-    .nav-card:hover::after { transform: scaleX(1); }
-    .nav-card-num {
-      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
-      color: var(--green); opacity: .2; flex-shrink: 0;
-    }
-    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-    .nav-card-sub { font-size: .72rem; color: var(--muted); }
-    .nav-card-arrow {
-      margin-left: auto; color: var(--muted); font-size: .85rem;
-      transition: color .2s, transform .2s;
-    }
-    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
-
-    /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--border); padding: 1.5rem 52px;
       display: flex; justify-content: space-between; align-items: center;
@@ -239,14 +183,11 @@
     .site-footer a { color: var(--green); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
 
-    /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
     .reveal.d1 { transition-delay: .08s; }
     .reveal.d2 { transition-delay: .16s; }
     .reveal.d3 { transition-delay: .24s; }
-    .reveal.d4 { transition-delay: .32s; }
-    .reveal.d5 { transition-delay: .40s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -256,7 +197,6 @@
     .hero-name   { animation: fadeUp .6s .12s both; }
     .hero-tagline{ animation: fadeUp .5s .22s both; }
     .hero-desc   { animation: fadeUp .5s .30s both; }
-    .hero-btns   { animation: fadeUp .5s .38s both; }
     .quote-card  { animation: fadeUp .5s .20s both; }
 
     @media (max-width: 1024px) {
@@ -298,7 +238,6 @@
 
 <div class="page-wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <span class="hero-badge">// 05 — Tổng kết</span>
@@ -311,7 +250,6 @@
       </p>
     </div>
 
-    <!-- Quote card -->
     <div class="quote-card">
       <span class="quote-mark">"</span>
       <p class="quote-text">
@@ -321,7 +259,6 @@
     </div>
   </section>
 
-  <!-- CONTENT -->
   <div class="content-area">
 
     <p class="section-label reveal">Đánh giá tổng quan</p>
@@ -352,7 +289,6 @@
       </div>
     </div>
 
-    <!-- REFLECTION -->
     <div class="reflection-block reveal d2">
       <h3>Cảm nhận cá nhân</h3>
       <p>
@@ -367,43 +303,6 @@
         Trong thời gian tới, tôi mong muốn tiếp tục nghiên cứu sâu hơn về mạng máy tính,
         an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
       </p>
-    </div>
-
-    <!-- NAV CARDS -->
-    <p class="section-label reveal">Quay lại khám phá</p>
-    <div class="nav-cards">
-      <a class="nav-card reveal d1" href="index.html">
-        <div class="nav-card-num">01</div>
-        <div>
-          <div class="nav-card-label">Trang chủ</div>
-          <div class="nav-card-sub">Giới thiệu bản thân</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d2" href="about.html">
-        <div class="nav-card-num">02</div>
-        <div>
-          <div class="nav-card-label">Giới thiệu</div>
-          <div class="nav-card-sub">Học vấn &amp; sở thích</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d3" href="projects.html">
-        <div class="nav-card-num">03</div>
-        <div>
-          <div class="nav-card-label">Hành trình</div>
-          <div class="nav-card-sub">7 bài tập học phần</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d4" href="skills.html">
-        <div class="nav-card-num">04</div>
-        <div>
-          <div class="nav-card-label">Kỹ năng</div>
-          <div class="nav-card-sub">8 kỹ năng đã học</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
     </div>
 
   </div>
