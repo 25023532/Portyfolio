@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Quách Đức Thiện</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- ✅ FIX 1: Đường dẫn đúng đến css/style.css -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     /* ═══════════════════════════════════
@@ -474,11 +475,11 @@
   <a class="nav-logo" href="#" onclick="showPage('home')">&#60; QDT /&#62;</a>
 
   <ul class="nav-links" id="navLinks">
-    <li><a href="#" onclick="showPage('home')"   id="nav-home">   <span class="num">01.</span> Trang chủ</a></li>
-    <li><a href="#" onclick="showPage('about')"  id="nav-about">  <span class="num">02.</span> Giới thiệu</a></li>
+    <li><a href="#" onclick="showPage('home')"     id="nav-home">    <span class="num">01.</span> Trang chủ</a></li>
+    <li><a href="#" onclick="showPage('about')"    id="nav-about">   <span class="num">02.</span> Giới thiệu</a></li>
     <li><a href="#" onclick="showPage('projects')" id="nav-projects"><span class="num">03.</span> Hành trình</a></li>
-    <li><a href="#" onclick="showPage('skills')" id="nav-skills"> <span class="num">04.</span> Kỹ năng</a></li>
-    <li><a href="#" onclick="showPage('summary')" id="nav-summary"><span class="num">05.</span> Tổng kết</a></li>
+    <li><a href="#" onclick="showPage('skills')"   id="nav-skills">  <span class="num">04.</span> Kỹ năng</a></li>
+    <li><a href="#" onclick="showPage('summary')"  id="nav-summary"> <span class="num">05.</span> Tổng kết</a></li>
   </ul>
 
   <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -664,7 +665,8 @@
           sao chép, di chuyển, xóa thông thường và xóa vĩnh viễn (Shift+Delete),
           đồng thời khôi phục tệp từ Recycle Bin.
         </p>
-        <a class="project-link" href="pdf/bai1.pdf" target="_blank">
+        <!-- ✅ FIX 2: Tên file PDF đúng với chữ B hoa -->
+        <a class="project-link" href="pdf/Bai1.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -678,7 +680,7 @@
           Xây dựng bộ tiêu chí đánh giá 5 chiều và tổng hợp xu hướng nghiên cứu
           IDS dựa trên Deep Learning giai đoạn 2020–2024.
         </p>
-        <a class="project-link" href="pdf/bai2.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai2.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -692,7 +694,7 @@
           Đúc kết 8 nguyên tắc viết prompt: Role Prompting, Chain-of-Thought, Few-shot,
           Constraint Prompting.
         </p>
-        <a class="project-link" href="pdf/bai3.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai3.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -706,7 +708,7 @@
           IntelliJ IDEA (Git integration), Google Drive (phân quyền theo vai trò)
           và Discord/Messenger. Ghi lại thách thức và cách giải quyết.
         </p>
-        <a class="project-link" href="pdf/bai4.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai4.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -721,7 +723,7 @@
           Canva AI và Adobe Firefly thiết kế layout.
           Thời gian giảm ~65% so với truyền thống.
         </p>
-        <a class="project-link" href="pdf/bai5.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai5.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -735,7 +737,7 @@
           tư duy trước–AI sau, minh bạch tuyệt đối, kiểm chứng độc lập số liệu,
           giữ giọng văn cá nhân.
         </p>
-        <a class="project-link" href="pdf/bai6.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai6.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -749,7 +751,7 @@
           thống nhất, sự khác biệt phương pháp và hạn chế tồn tại,
           đề xuất hướng nghiên cứu tiếp theo.
         </p>
-        <a class="project-link" href="pdf/bai7.pdf" target="_blank">
+        <a class="project-link" href="pdf/Bai7.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i> Xem PDF
         </a>
       </div>
@@ -944,11 +946,4 @@
 
   // close menu on nav link click (mobile)
   document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
-    });
-  });
-</script>
-
-</body>
-</html>
+    a.addEventListener(
