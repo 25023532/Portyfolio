@@ -203,6 +203,30 @@
     .site-footer a { color: var(--green); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
 
+    /* ── CAPABILITY TAGS ── */
+    .cap-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .78rem; font-weight: 500;
+      padding: 7px 14px;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border: 1px solid var(--green-chip);
+      border-radius: 50px;
+      transition: background .2s, border-color .2s;
+      cursor: default;
+    }
+    .cap-tag:hover { background: var(--green-chip); border-color: var(--green); }
+    .cap-tag i { font-size: .75rem; color: var(--green); }
+    .cap-tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .cap-group { margin-bottom: 20px; }
+    .cap-group:last-child { margin-bottom: 0; }
+    .cap-group-label {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
     .reveal.d1 { transition-delay: .08s; }
@@ -279,41 +303,62 @@
         <li>AI và ứng dụng công nghệ số</li>
       </ul>
 
-      <div class="card-section-title">Thông tin cá nhân</div>
-      <div class="info-row">
-        <span class="info-label">Trường</span>
-        <span class="info-value">UET – VNU</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Khóa</span>
-        <span class="info-value">K70I</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">MSSV</span>
-        <span class="info-value">25023532</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Email</span>
-        <span class="info-value email">25023532@vnu.edu.vn</span>
-      </div>
     </div>
   </section>
 
   <div class="content-area">
 
-    <p class="section-label reveal">Mục tiêu nghề nghiệp</p>
+    <p class="section-label reveal">Định hướng nghề nghiệp</p>
     <div class="cards-row">
       <div class="detail-card reveal d1">
-        <h3><i class="fa-solid fa-bullseye" style="margin-right:8px;font-size:.9rem"></i>Mục tiêu nghề nghiệp</h3>
+        <h3><i class="fa-solid fa-shield-halved" style="margin-right:8px;font-size:.9rem"></i>Chuyên viên An ninh mạng</h3>
         <p>
-          Trở thành kỹ sư công nghệ có khả năng triển khai, vận hành
-          và bảo vệ các hệ thống thông tin hiện đại. Không ngừng học hỏi
-          để bắt kịp nhịp độ phát triển của công nghệ toàn cầu.
+          Mục tiêu của tôi là trở thành một <strong style="color:var(--green)">Chuyên viên An ninh mạng</strong>
+          có chuyên môn sâu, đủ năng lực phát hiện, phân tích và ngăn chặn các mối đe dọa
+          trong hệ thống thông tin hiện đại.
+        </p>
+        <p>
+          Tôi định hướng đi sâu vào các lĩnh vực như kiểm thử xâm nhập (Penetration Testing),
+          phân tích mã độc, giám sát an ninh mạng (SOC) và bảo mật hạ tầng đám mây.
+          Song song đó, tôi mong muốn đạt được các chứng chỉ quốc tế như CompTIA Security+,
+          CEH hoặc OSCP trong tương lai gần.
+        </p>
+        <p>
+          Với nền tảng ngành Mạng máy tính và niềm đam mê bảo mật, tôi tin rằng đây là con đường
+          phù hợp để tôi đóng góp thực sự cho sự an toàn của hệ thống số Việt Nam.
         </p>
       </div>
     </div>
 
-    <p class="section-label reveal" style="margin-top:8px;">Sở thích</p>
+    <p class="section-label reveal" style="margin-top:28px;">Năng lực</p>
+    <div class="cards-row">
+      <div class="detail-card reveal d1">
+        <h3><i class="fa-solid fa-layer-group" style="margin-right:8px;font-size:.9rem"></i>Nền tảng lập trình</h3>
+        <p>Có khả năng lập trình cơ bản, ứng dụng vào giải quyết bài toán kỹ thuật và
+          xây dựng các công cụ hỗ trợ học tập, nghiên cứu.</p>
+
+        <div class="cap-group">
+          <div class="cap-group-label">Ngôn ngữ lập trình</div>
+          <div class="cap-tags-wrap">
+            <span class="cap-tag"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="cap-tag"><i class="fa-brands fa-java"></i> Java</span>
+            <span class="cap-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+          </div>
+        </div>
+
+        <div class="cap-group">
+          <div class="cap-group-label">Môi trường & Công cụ</div>
+          <div class="cap-tags-wrap">
+            <span class="cap-tag"><i class="fa-solid fa-code"></i> VS Code</span>
+            <span class="cap-tag"><i class="fa-solid fa-laptop-code"></i> IntelliJ IDEA</span>
+            <span class="cap-tag"><i class="fa-brands fa-git-alt"></i> Git</span>
+            <span class="cap-tag"><i class="fa-brands fa-github"></i> GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label reveal" style="margin-top:28px;">Sở thích</p>
     <div class="hobby-grid">
       <div class="hobby-card reveal d1">
         <span class="hobby-emoji">📚</span>
