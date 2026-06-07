@@ -5,104 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giới thiệu | Quách Đức Thiện</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <style>
-    .about-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 72px 60px 0;
-      flex: 1;
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .about-card-stack { display: flex; flex-direction: column; gap: 20px; }
-
-    /* Quick info grid inside card */
-    .info-mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .info-mini-item .lbl {
-      font-family: var(--mono);
-      font-size: .58rem;
-      color: var(--muted);
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-    .info-mini-item .val {
-      font-weight: 700;
-      font-size: .82rem;
-      color: var(--text);
-      word-break: break-all;
-    }
-
-    /* Hobbies */
-    .hobbies-label {
-      font-family: var(--mono);
-      font-size: .65rem;
-      color: var(--accent);
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      opacity: .85;
-    }
-    .hobby-list { display: flex; flex-direction: column; gap: 12px; }
-    .hobby-item {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      transition: border-color .2s, transform .2s;
-    }
-    .hobby-item:hover {
-      border-color: rgba(0,229,160,.35);
-      transform: translateX(5px);
-    }
-    .hobby-icon { font-size: 26px; flex-shrink: 0; }
-    .hobby-title {
-      font-weight: 700; font-size: .88rem;
-      color: var(--accent); margin-bottom: 3px;
-    }
-    .hobby-desc {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .about-wrap { padding: 60px 20px 0; }
-      .about-grid { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html"              ><span class="num">01.</span>Trang chủ</a></li>
-    <li><a href="about.html"   class="active"><span class="num">02.</span>Giới thiệu</a></li>
-    <li><a href="projects.html"           ><span class="num">03.</span>Hành trình</a></li>
-    <li><a href="skills.html"             ><span class="num">04.</span>Kỹ năng</a></li>
-    <li><a href="summary.html"            ><span class="num">05.</span>Tổng kết</a></li>
-  </ul>
-  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-</nav>
+<div class="topbar">
+  <a class="topbar-logo" href="index.html">Quách Đức Thiện</a>
+</div>
 
-<div class="page-wrap">
-<div class="about-wrap">
+<div class="content-wrap">
 
-  <p class="eyebrow reveal">// 02 — về tôi</p>
-  <h1 class="page-title reveal d1">Giới thiệu<br><span>bản thân</span></h1>
+  <p class="section-eyebrow reveal">// 02 — về tôi</p>
+  <h1 class="section-title reveal d1">Giới thiệu<br><span>bản thân</span></h1>
 
   <div class="about-grid">
 
@@ -113,7 +29,7 @@
         <h3>Học vấn &amp; Định hướng</h3>
         <p>
           Tôi hiện đang theo học ngành
-          <strong style="color:var(--accent)">Mạng máy tính và Truyền thông dữ liệu</strong>
+          <strong style="color:var(--green)">Mạng máy tính và Truyền thông dữ liệu</strong>
           tại Trường Đại học Công Nghệ – ĐHQGHN.
         </p>
         <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
@@ -158,8 +74,8 @@
     </div>
 
     <!-- RIGHT: hobbies -->
-    <div class="reveal d2">
-      <div class="hobbies-label">// Sở thích</div>
+    <div class="hobbies-card reveal d2">
+      <div class="hobbies-card-title">Sở thích</div>
       <div class="hobby-list">
         <div class="hobby-item">
           <span class="hobby-icon">📚</span>
@@ -192,7 +108,7 @@
       </div>
     </div>
 
-  </div><!-- /about-grid -->
+  </div>
 
   <div class="page-nav reveal">
     <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
@@ -200,18 +116,14 @@
     <a href="projects.html">Hành trình <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
-</div><!-- /about-wrap -->
-
-  <footer class="site-footer">
-    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
-    <p>UET – Đại học Quốc gia Hà Nội</p>
-  </footer>
 </div>
 
+<footer class="site-footer">
+  <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+  <p>UET – Đại học Quốc gia Hà Nội</p>
+</footer>
+
 <script>
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('open');
-  });
   const obs = new IntersectionObserver(
     e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
     { threshold: 0.08 }
