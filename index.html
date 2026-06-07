@@ -349,7 +349,11 @@
     .reveal.d1 { transition-delay: .08s; }
     .reveal.d2 { transition-delay: .16s; }
     .reveal.d3 { transition-delay: .24s; }
-    .reveal.d4 { transition-delay: .32s; }
+    .reveal.d5 { transition-delay: .40s; }
+
+    /* Nav links hidden — navigation via nav-cards only */
+    .nav-links { display: none !important; }
+    .menu-btn  { display: none !important; }
 
     /* ── ANIMATE IN ── */
     @keyframes fadeUp {
@@ -395,11 +399,11 @@
 <nav class="navbar">
   <a class="nav-logo" href="index.html">Quách Đức Thiện</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html"    class="active">Trang chủ</a></li>
-    <li><a href="about.html"               >Giới thiệu</a></li>
-    <li><a href="projects.html"            >Dự án</a></li>
-    <li><a href="skills.html"              >Kỹ năng</a></li>
-    <li><a href="summary.html"             >Tổng kết</a></li>
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+    <li><a href="projects.html">Dự án</a></li>
+    <li><a href="skills.html">Kỹ năng</a></li>
+    <li><a href="summary.html">Tổng kết</a></li>
   </ul>
   <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
 </nav>
@@ -420,14 +424,7 @@
         kỹ sư công nghệ chất lượng cao.<br><br>
         Hiện đang theo học tại <a href="https://uet.vnu.edu.vn" target="_blank">VNU–UET</a>.
       </p>
-      <div class="hero-btns">
-        <a class="btn btn-solid" href="projects.html">
-          <i class="fa-solid fa-folder-open"></i> Xem dự án
-        </a>
-        <a class="btn btn-outline" href="summary.html">
-          <i class="fa-solid fa-flag-checkered"></i> Tổng kết
-        </a>
-      </div>
+
     </div>
 
     <!-- Right: merged About + Info card -->
@@ -473,7 +470,15 @@
   <div class="nav-cards-wrap">
     <p class="section-label">Khám phá</p>
     <div class="nav-cards">
-      <a class="nav-card reveal d1" href="about.html">
+      <a class="nav-card reveal d1" href="index.html">
+        <div class="nav-card-num">01</div>
+        <div>
+          <div class="nav-card-label">Trang chủ</div>
+          <div class="nav-card-sub">Giới thiệu bản thân</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d2" href="about.html">
         <div class="nav-card-num">02</div>
         <div>
           <div class="nav-card-label">Giới thiệu</div>
@@ -481,7 +486,7 @@
         </div>
         <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
       </a>
-      <a class="nav-card reveal d2" href="projects.html">
+      <a class="nav-card reveal d3" href="projects.html">
         <div class="nav-card-num">03</div>
         <div>
           <div class="nav-card-label">Hành trình</div>
@@ -489,7 +494,7 @@
         </div>
         <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
       </a>
-      <a class="nav-card reveal d3" href="skills.html">
+      <a class="nav-card reveal d4" href="skills.html">
         <div class="nav-card-num">04</div>
         <div>
           <div class="nav-card-label">Kỹ năng</div>
@@ -497,7 +502,7 @@
         </div>
         <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
       </a>
-      <a class="nav-card reveal d4" href="summary.html">
+      <a class="nav-card reveal d5" href="summary.html">
         <div class="nav-card-num">05</div>
         <div>
           <div class="nav-card-label">Tổng kết</div>
