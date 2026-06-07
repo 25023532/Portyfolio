@@ -5,97 +5,402 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kỹ năng | Quách Đức Thiện</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --green:      #1e6b4a;
+      --green-dark: #14503a;
+      --green-mid:  #2d8a60;
+      --green-pale: #e8f5ee;
+      --green-bg:   #f0f7f2;
+      --green-chip: #d4ead9;
+      --text:       #1a2e25;
+      --muted:      #5a7a65;
+      --border:     #cde3d4;
+      --white:      #ffffff;
+      --nav-h:      60px;
+      --r:          18px;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-body:  'DM Sans', sans-serif;
+      --font-mono:  'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--green-bg);
+      color: var(--text);
+      font-size: 15px; line-height: 1.65;
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; z-index: 999;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;
+      color: var(--green); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: .25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .85rem; font-weight: 500;
+      color: var(--muted); padding: 6px 14px; border-radius: 6px;
+      transition: color .2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 14px; right: 14px;
+      height: 2px; background: var(--green);
+      transform: scaleX(0); transition: transform .2s; border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .nav-links a.active::after { transform: scaleX(1); }
+    .menu-btn {
+      display: none; background: none; border: none;
+      color: var(--green); font-size: 1.2rem; cursor: pointer;
+    }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-left { padding-right: 20px; }
+    .hero-badge {
+      display: inline-block; font-size: .72rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); background: var(--green-chip);
+      border-radius: 50px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900; line-height: .95;
+      color: var(--green); letter-spacing: -1px; margin-bottom: 22px;
+    }
+    .hero-name span { color: var(--green-mid); }
+    .hero-tagline {
+      font-size: clamp(14px, 1.5vw, 17px); font-weight: 500;
+      color: var(--text); margin-bottom: 18px; opacity: .85;
+    }
+    .hero-desc {
+      font-size: .9rem; color: var(--muted); line-height: 1.85; max-width: 480px;
+    }
+
+    /* ── STATS CARD (right) ── */
+    .stats-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 26px;
+    }
+    .stats-card-label {
+      font-size: .8rem; font-weight: 600; color: var(--green);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .stat-box {
+      background: var(--green-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 16px; text-align: center;
+      transition: background .2s, border-color .2s;
+    }
+    .stat-box:hover { background: var(--green-pale); border-color: var(--green); }
+    .stat-box-num {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 900;
+      color: var(--green); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-box-lbl { font-size: .72rem; color: var(--muted); font-weight: 500; }
+
+    /* ── CONTENT ── */
+    .content-area {
+      padding: 0 52px 72px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-label {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    /* ── SKILL CARDS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 22px 24px;
+      text-align: center; transition: all .25s;
+      position: relative; overflow: hidden;
+    }
+    .skill-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .skill-card:hover {
+      border-color: var(--green); transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(30,107,74,.1);
+    }
+    .skill-card:hover::after { transform: scaleX(1); }
+    .skill-icon { font-size: 2rem; color: var(--green); margin-bottom: 16px; display: block; }
+    .skill-title {
+      font-family: var(--font-serif); font-size: .95rem; font-weight: 700;
+      color: var(--green); margin-bottom: 10px;
+    }
+    .skill-desc { font-size: .8rem; line-height: 1.75; color: var(--muted); }
+
+    /* ── NAV CARDS ── */
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 48px;
+    }
+    .nav-card {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 22px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 14px;
+      text-decoration: none; transition: all .25s;
+      position: relative; overflow: hidden;
+    }
+    .nav-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .nav-card:hover {
+      border-color: var(--green); transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,107,74,.12);
+    }
+    .nav-card:hover::after { transform: scaleX(1); }
+    .nav-card-num {
+      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+      color: var(--green); opacity: .2; flex-shrink: 0;
+    }
+    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .nav-card-sub { font-size: .72rem; color: var(--muted); }
+    .nav-card-arrow {
+      margin-left: auto; color: var(--muted); font-size: .85rem;
+      transition: color .2s, transform .2s;
+    }
+    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 52px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .5rem; background: var(--white);
+    }
+    .site-footer p { font-size: .78rem; color: var(--muted); }
+    .site-footer a { color: var(--green); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: .08s; }
+    .reveal.d2 { transition-delay: .16s; }
+    .reveal.d3 { transition-delay: .24s; }
+    .reveal.d4 { transition-delay: .32s; }
+    .reveal.d5 { transition-delay: .40s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge  { animation: fadeUp .5s .05s both; }
+    .hero-name   { animation: fadeUp .6s .12s both; }
+    .hero-tagline{ animation: fadeUp .5s .22s both; }
+    .hero-desc   { animation: fadeUp .5s .30s both; }
+    .stats-card  { animation: fadeUp .5s .20s both; }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding-right: 0; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 0 20px; }
+      .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; right: 0;
+        flex-direction: column; background: var(--white);
+        border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .9rem 20px; border-bottom: 1px solid var(--border); border-radius: 0; }
+      .nav-links a.active::after { display: none; }
+      .nav-links a.active { border-left: 3px solid var(--green); }
+      .menu-btn { display: block; }
+      .hero { padding: 36px 20px 32px; gap: 24px; }
+      .content-area { padding: 0 20px 56px; }
+      .site-footer { padding: 1.25rem 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a class="topbar-logo" href="index.html">Quách Đức Thiện</a>
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">Quách Đức Thiện</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+    <li><a href="projects.html">Hành trình</a></li>
+    <li><a href="skills.html" class="active">Kỹ năng</a></li>
+    <li><a href="summary.html">Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-badge">// 04 — Kỹ năng</span>
+      <h1 class="hero-name">Kỹ năng<br><span>đã học</span></h1>
+      <p class="hero-tagline">8 kỹ năng số được rèn giũa qua thực hành</p>
+      <p class="hero-desc">
+        Từ quản lý dữ liệu, tìm kiếm học thuật, đến prompt engineering
+        và ứng dụng các công cụ AI hiện đại — tất cả được xây dựng
+        qua 7 bài thực hành trong một học kỳ.
+      </p>
+    </div>
+
+    <!-- Stats card -->
+    <div class="stats-card">
+      <div class="stats-card-label"><i class="fa-solid fa-trophy"></i> Thành tích học kỳ</div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-num">8</div>
+          <div class="stat-box-lbl">Kỹ năng</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-num">7</div>
+          <div class="stat-box-lbl">Bài thực hành</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-num">10+</div>
+          <div class="stat-box-lbl">Công cụ AI</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-num">1</div>
+          <div class="stat-box-lbl">Học kỳ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <div class="content-area">
+    <p class="section-label reveal">Danh sách kỹ năng</p>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal d1">
+        <span class="skill-icon"><i class="fa-solid fa-folder-tree"></i></span>
+        <div class="skill-title">Quản lý dữ liệu</div>
+        <div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div>
+      </div>
+      <div class="skill-card reveal d2">
+        <span class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <div class="skill-title">Tìm kiếm học thuật</div>
+        <div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div>
+      </div>
+      <div class="skill-card reveal d3">
+        <span class="skill-icon"><i class="fa-solid fa-brain"></i></span>
+        <div class="skill-title">Prompt Engineering</div>
+        <div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div>
+      </div>
+      <div class="skill-card reveal d4">
+        <span class="skill-icon"><i class="fa-solid fa-users"></i></span>
+        <div class="skill-title">Làm việc nhóm</div>
+        <div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div>
+      </div>
+      <div class="skill-card reveal d1">
+        <span class="skill-icon"><i class="fa-solid fa-robot"></i></span>
+        <div class="skill-title">AI Tools</div>
+        <div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div>
+      </div>
+      <div class="skill-card reveal d2">
+        <span class="skill-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <div class="skill-title">An toàn thông tin</div>
+        <div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div>
+      </div>
+      <div class="skill-card reveal d3">
+        <span class="skill-icon"><i class="fa-solid fa-network-wired"></i></span>
+        <div class="skill-title">Mạng máy tính</div>
+        <div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div>
+      </div>
+      <div class="skill-card reveal d4">
+        <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
+        <div class="skill-title">Lập trình</div>
+        <div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div>
+      </div>
+
+    </div>
+
+    <!-- NAV CARDS -->
+    <p class="section-label reveal" style="margin-top: 48px;">Khám phá thêm</p>
+    <div class="nav-cards">
+      <a class="nav-card reveal d1" href="index.html">
+        <div class="nav-card-num">01</div>
+        <div>
+          <div class="nav-card-label">Trang chủ</div>
+          <div class="nav-card-sub">Giới thiệu bản thân</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d2" href="about.html">
+        <div class="nav-card-num">02</div>
+        <div>
+          <div class="nav-card-label">Giới thiệu</div>
+          <div class="nav-card-sub">Học vấn &amp; sở thích</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d3" href="projects.html">
+        <div class="nav-card-num">03</div>
+        <div>
+          <div class="nav-card-label">Hành trình</div>
+          <div class="nav-card-sub">7 bài tập học phần</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d4" href="summary.html">
+        <div class="nav-card-num">05</div>
+        <div>
+          <div class="nav-card-label">Tổng kết</div>
+          <div class="nav-card-sub">Cảm nhận &amp; định hướng</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+
 </div>
-
-<div class="content-wrap">
-
-  <p class="section-eyebrow reveal">// 04 — kỹ năng</p>
-  <h1 class="section-title reveal d1">Kỹ năng<br><span>đã học</span></h1>
-
-  <div class="skills-stats reveal d2">
-    <div class="stat-item">
-      <div class="stat-num">8</div>
-      <div class="stat-lbl">Kỹ năng</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">7</div>
-      <div class="stat-lbl">Bài thực hành</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">10+</div>
-      <div class="stat-lbl">Công cụ AI</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">1</div>
-      <div class="stat-lbl">Học kỳ</div>
-    </div>
-  </div>
-
-  <div class="skills-grid">
-    <div class="skill-card reveal d1">
-      <span class="skill-icon"><i class="fa-solid fa-folder-tree"></i></span>
-      <div class="skill-title">Quản lý dữ liệu</div>
-      <div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div>
-    </div>
-    <div class="skill-card reveal d2">
-      <span class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <div class="skill-title">Tìm kiếm học thuật</div>
-      <div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div>
-    </div>
-    <div class="skill-card reveal d3">
-      <span class="skill-icon"><i class="fa-solid fa-brain"></i></span>
-      <div class="skill-title">Prompt Engineering</div>
-      <div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div>
-    </div>
-    <div class="skill-card reveal d4">
-      <span class="skill-icon"><i class="fa-solid fa-users"></i></span>
-      <div class="skill-title">Làm việc nhóm</div>
-      <div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div>
-    </div>
-    <div class="skill-card reveal d1">
-      <span class="skill-icon"><i class="fa-solid fa-robot"></i></span>
-      <div class="skill-title">AI Tools</div>
-      <div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div>
-    </div>
-    <div class="skill-card reveal d2">
-      <span class="skill-icon"><i class="fa-solid fa-shield-halved"></i></span>
-      <div class="skill-title">An toàn thông tin</div>
-      <div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div>
-    </div>
-    <div class="skill-card reveal d3">
-      <span class="skill-icon"><i class="fa-solid fa-network-wired"></i></span>
-      <div class="skill-title">Mạng máy tính</div>
-      <div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div>
-    </div>
-    <div class="skill-card reveal d4">
-      <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
-      <div class="skill-title">Lập trình</div>
-      <div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div>
-    </div>
-  </div>
-
-  <div class="page-nav reveal">
-    <a href="projects.html"><i class="fa-solid fa-arrow-left"></i> Hành trình</a>
-    <span class="page-nav-indicator">04 / 05</span>
-    <a href="summary.html">Tổng kết <i class="fa-solid fa-arrow-right"></i></a>
-  </div>
-
-</div>
-
-<footer class="site-footer">
-  <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
-  <p>UET – Đại học Quốc gia Hà Nội</p>
-</footer>
 
 <script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
   const obs = new IntersectionObserver(
     e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
     { threshold: 0.08 }
