@@ -129,15 +129,16 @@
       color: var(--muted); margin-bottom: 16px;
     }
 
+    /* ── SKILL CARDS — EXPANDED ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
     .skill-card {
       background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 28px 22px 24px;
-      text-align: center; transition: all .25s;
+      border-radius: var(--r); padding: 28px 24px 24px;
+      transition: all .25s;
       position: relative; overflow: hidden;
     }
     .skill-card::after {
@@ -150,12 +151,46 @@
       box-shadow: 0 14px 36px rgba(30,107,74,.1);
     }
     .skill-card:hover::after { transform: scaleX(1); }
-    .skill-icon { font-size: 2rem; color: var(--green); margin-bottom: 16px; display: block; }
-    .skill-title {
-      font-family: var(--font-serif); font-size: .95rem; font-weight: 700;
-      color: var(--green); margin-bottom: 10px;
+    .skill-card-header {
+      display: flex; align-items: flex-start; gap: 14px; margin-bottom: 16px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border);
     }
-    .skill-desc { font-size: .8rem; line-height: 1.75; color: var(--muted); }
+    .skill-icon-wrap {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--green-pale); border: 1px solid var(--green-chip);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .skill-icon { font-size: 1.3rem; color: var(--green); }
+    .skill-header-text { flex: 1; }
+    .skill-title {
+      font-family: var(--font-serif); font-size: 1rem; font-weight: 700;
+      color: var(--green); margin-bottom: 4px;
+    }
+    .skill-subtitle { font-size: .73rem; color: var(--muted); font-weight: 500; }
+    .skill-desc { font-size: .82rem; line-height: 1.8; color: var(--muted); margin-bottom: 14px; }
+    .skill-points { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .skill-points li {
+      font-size: .8rem; color: var(--muted);
+      padding-left: 16px; position: relative; line-height: 1.6;
+    }
+    .skill-points li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--green); font-size: 1rem; line-height: 1.4;
+    }
+    .skill-tools { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tool-tag {
+      font-size: .68rem; font-weight: 600;
+      background: var(--green-pale); color: var(--green-dark);
+      border: 1px solid var(--green-chip);
+      border-radius: 50px; padding: 3px 10px;
+    }
+    .skill-level {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    }
+    .skill-level-label { font-size: .7rem; font-weight: 600; color: var(--muted); flex-shrink: 0; }
+    .skill-level-bar { flex: 1; height: 5px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .skill-level-fill { height: 100%; background: var(--green); border-radius: 10px; transition: width 1s ease; }
 
     .site-footer {
       border-top: 1px solid var(--border); padding: 1.5rem 52px;
@@ -260,45 +295,259 @@
     <p class="section-label reveal">Danh sách kỹ năng</p>
     <div class="skills-grid">
 
+      <!-- 1. Quản lý dữ liệu -->
       <div class="skill-card reveal d1">
-        <span class="skill-icon"><i class="fa-solid fa-folder-tree"></i></span>
-        <div class="skill-title">Quản lý dữ liệu</div>
-        <div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-folder-tree"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Quản lý dữ liệu</div>
+            <div class="skill-subtitle">Bài thực hành 01</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:75%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Tốt</span>
+        </div>
+        <div class="skill-desc">
+          Học cách tổ chức và quản lý tệp tin, thư mục một cách có hệ thống, áp dụng
+          các nguyên tắc đặt tên nhất quán và phân cấp cấu trúc dữ liệu khoa học.
+        </div>
+        <ul class="skill-points">
+          <li>Xây dựng cấu trúc thư mục theo tiêu chuẩn dự án thực tế</li>
+          <li>Đặt tên tệp tin theo quy ước nhất quán, dễ tìm kiếm</li>
+          <li>Sao lưu và đồng bộ dữ liệu với Google Drive và OneDrive</li>
+          <li>Quản lý phiên bản tài liệu, tránh trùng lặp và mất dữ liệu</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">Google Drive</span>
+          <span class="skill-tool-tag">OneDrive</span>
+          <span class="skill-tool-tag">File Explorer</span>
+        </div>
       </div>
+
+      <!-- 2. Tìm kiếm học thuật -->
       <div class="skill-card reveal d2">
-        <span class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-        <div class="skill-title">Tìm kiếm học thuật</div>
-        <div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-magnifying-glass"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Tìm kiếm học thuật</div>
+            <div class="skill-subtitle">Bài thực hành 02</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:80%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Tốt</span>
+        </div>
+        <div class="skill-desc">
+          Nắm vững kỹ năng tra cứu tài liệu học thuật chất lượng cao trên các
+          cơ sở dữ liệu uy tín, đánh giá độ tin cậy và trích dẫn đúng chuẩn.
+        </div>
+        <ul class="skill-points">
+          <li>Sử dụng toán tử Boolean (AND, OR, NOT) để lọc kết quả</li>
+          <li>Tìm kiếm nâng cao trên Google Scholar, IEEE Xplore, Springer</li>
+          <li>Đánh giá chỉ số IF, H-index, số lượt trích dẫn của bài báo</li>
+          <li>Quản lý tài liệu tham khảo bằng Zotero</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">Google Scholar</span>
+          <span class="skill-tool-tag">IEEE Xplore</span>
+          <span class="skill-tool-tag">Springer</span>
+          <span class="skill-tool-tag">Zotero</span>
+        </div>
       </div>
+
+      <!-- 3. Prompt Engineering -->
       <div class="skill-card reveal d3">
-        <span class="skill-icon"><i class="fa-solid fa-brain"></i></span>
-        <div class="skill-title">Prompt Engineering</div>
-        <div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-brain"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Prompt Engineering</div>
+            <div class="skill-subtitle">Bài thực hành 03</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:85%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Giỏi</span>
+        </div>
+        <div class="skill-desc">
+          Thiết kế và tối ưu hóa prompt để khai thác tối đa khả năng của các
+          mô hình AI trong học tập, nghiên cứu và tạo nội dung sáng tạo.
+        </div>
+        <ul class="skill-points">
+          <li>Áp dụng kỹ thuật Chain-of-Thought và Few-shot prompting</li>
+          <li>Đặc tả vai trò, ngữ cảnh và định dạng đầu ra rõ ràng</li>
+          <li>Tái cấu trúc prompt khi kết quả chưa đạt yêu cầu</li>
+          <li>So sánh và đánh giá chất lượng đầu ra giữa các mô hình</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">ChatGPT</span>
+          <span class="skill-tool-tag">Claude</span>
+          <span class="skill-tool-tag">Gemini</span>
+        </div>
       </div>
+
+      <!-- 4. Làm việc nhóm -->
       <div class="skill-card reveal d4">
-        <span class="skill-icon"><i class="fa-solid fa-users"></i></span>
-        <div class="skill-title">Làm việc nhóm</div>
-        <div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-users"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Làm việc nhóm</div>
+            <div class="skill-subtitle">Bài thực hành 04</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:78%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Tốt</span>
+        </div>
+        <div class="skill-desc">
+          Làm quen với quy trình cộng tác nhóm chuyên nghiệp, ứng dụng các
+          công cụ quản lý dự án và kiểm soát phiên bản trong môi trường học thuật.
+        </div>
+        <ul class="skill-points">
+          <li>Sử dụng Git/GitHub để quản lý phiên bản và cộng tác code</li>
+          <li>Phân chia nhiệm vụ và theo dõi tiến độ qua GitHub Issues</li>
+          <li>Cộng tác thời gian thực trên Google Docs và Google Slides</li>
+          <li>Viết commit message chuẩn, tạo Pull Request và review code</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">GitHub</span>
+          <span class="skill-tool-tag">Git</span>
+          <span class="skill-tool-tag">Google Docs</span>
+          <span class="skill-tool-tag">Trello</span>
+        </div>
       </div>
+
+      <!-- 5. AI Tools -->
       <div class="skill-card reveal d1">
-        <span class="skill-icon"><i class="fa-solid fa-robot"></i></span>
-        <div class="skill-title">AI Tools</div>
-        <div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-robot"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Công cụ AI</div>
+            <div class="skill-subtitle">Bài thực hành 05</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:82%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Giỏi</span>
+        </div>
+        <div class="skill-desc">
+          Khám phá và ứng dụng đa dạng công cụ AI hiện đại vào học tập, sáng tạo
+          nội dung và xử lý thông tin — từ ngôn ngữ đến hình ảnh và thiết kế.
+        </div>
+        <ul class="skill-points">
+          <li>Dùng ChatGPT, Claude, Gemini để giải thích khái niệm, tóm tắt tài liệu</li>
+          <li>Tạo hình ảnh minh họa với DALL-E và Adobe Firefly</li>
+          <li>Thiết kế nhanh bài thuyết trình và infographic với Canva AI</li>
+          <li>So sánh điểm mạnh, yếu của từng công cụ theo từng tác vụ</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">ChatGPT</span>
+          <span class="skill-tool-tag">Claude</span>
+          <span class="skill-tool-tag">Gemini</span>
+          <span class="skill-tool-tag">DALL-E</span>
+          <span class="skill-tool-tag">Canva AI</span>
+          <span class="skill-tool-tag">Adobe Firefly</span>
+        </div>
       </div>
+
+      <!-- 6. An toàn thông tin -->
       <div class="skill-card reveal d2">
-        <span class="skill-icon"><i class="fa-solid fa-shield-halved"></i></span>
-        <div class="skill-title">An toàn thông tin</div>
-        <div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-shield-halved"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">An toàn thông tin</div>
+            <div class="skill-subtitle">Bài thực hành 06</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:70%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Khá</span>
+        </div>
+        <div class="skill-desc">
+          Hiểu và áp dụng các nguyên tắc bảo mật cơ bản trong việc sử dụng
+          công nghệ số và khai thác AI một cách có trách nhiệm, đạo đức.
+        </div>
+        <ul class="skill-points">
+          <li>Nhận biết và tránh các mối đe dọa phổ biến: phishing, malware, social engineering</li>
+          <li>Thực hành bảo mật tài khoản: mật khẩu mạnh, xác thực 2 lớp (2FA)</li>
+          <li>Hiểu quyền riêng tư dữ liệu và GDPR cơ bản</li>
+          <li>Sử dụng AI đúng đắn: tránh rò rỉ thông tin nhạy cảm</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">2FA</span>
+          <span class="skill-tool-tag">VPN</span>
+          <span class="skill-tool-tag">Password Manager</span>
+        </div>
       </div>
+
+      <!-- 7. Mạng máy tính -->
       <div class="skill-card reveal d3">
-        <span class="skill-icon"><i class="fa-solid fa-network-wired"></i></span>
-        <div class="skill-title">Mạng máy tính</div>
-        <div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-network-wired"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Mạng máy tính</div>
+            <div class="skill-subtitle">Chuyên ngành</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:72%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Khá</span>
+        </div>
+        <div class="skill-desc">
+          Kiến thức nền tảng về kiến trúc và vận hành hệ thống mạng,
+          là nền tảng cốt lõi cho định hướng An ninh mạng trong tương lai.
+        </div>
+        <ul class="skill-points">
+          <li>Nắm vững mô hình OSI 7 lớp và bộ giao thức TCP/IP</li>
+          <li>Hiểu cơ chế hoạt động của DNS, DHCP, HTTP/HTTPS</li>
+          <li>Phân tích gói tin mạng cơ bản với Wireshark</li>
+          <li>Cấu hình mạng LAN/VLAN cơ bản trên Cisco Packet Tracer</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">Wireshark</span>
+          <span class="skill-tool-tag">Cisco Packet Tracer</span>
+          <span class="skill-tool-tag">TCP/IP</span>
+        </div>
       </div>
+
+      <!-- 8. Lập trình -->
       <div class="skill-card reveal d4">
-        <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
-        <div class="skill-title">Lập trình</div>
-        <div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div>
+        <div class="skill-card-header">
+          <div class="skill-icon-wrap"><i class="skill-icon fa-solid fa-code"></i></div>
+          <div class="skill-header-text">
+            <div class="skill-title">Lập trình</div>
+            <div class="skill-subtitle">Bài thực hành 07</div>
+          </div>
+        </div>
+        <div class="skill-level">
+          <span class="skill-level-label">Mức độ</span>
+          <div class="skill-level-bar"><div class="skill-level-fill" style="width:68%"></div></div>
+          <span class="skill-level-label" style="color:var(--green)">Khá</span>
+        </div>
+        <div class="skill-desc">
+          Xây dựng nền tảng lập trình đa ngôn ngữ, tập trung vào tư duy giải
+          quyết vấn đề và áp dụng AI hỗ trợ quá trình phát triển phần mềm.
+        </div>
+        <ul class="skill-points">
+          <li>Lập trình Java hướng đối tượng: class, kế thừa, đa hình</li>
+          <li>Xây dựng trang web cơ bản với HTML, CSS và JavaScript</li>
+          <li>Viết script Python để tự động hóa tác vụ lặp đi lặp lại</li>
+          <li>Dùng GitHub Copilot và ChatGPT để hỗ trợ debug và viết code</li>
+        </ul>
+        <div class="skill-tools">
+          <span class="skill-tool-tag">Java</span>
+          <span class="skill-tool-tag">Python</span>
+          <span class="skill-tool-tag">HTML/CSS</span>
+          <span class="skill-tool-tag">JavaScript</span>
+          <span class="skill-tool-tag">VS Code</span>
+        </div>
       </div>
 
     </div>
