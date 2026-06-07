@@ -5,92 +5,420 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tổng kết | Quách Đức Thiện</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
-    .summary-wrap { max-width: 1000px; margin: 0 auto; }
+    :root {
+      --green:      #1e6b4a;
+      --green-dark: #14503a;
+      --green-mid:  #2d8a60;
+      --green-pale: #e8f5ee;
+      --green-bg:   #f0f7f2;
+      --green-chip: #d4ead9;
+      --text:       #1a2e25;
+      --muted:      #5a7a65;
+      --border:     #cde3d4;
+      --white:      #ffffff;
+      --nav-h:      60px;
+      --r:          18px;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-body:  'DM Sans', sans-serif;
+      --font-mono:  'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--green-bg);
+      color: var(--text);
+      font-size: 15px; line-height: 1.65;
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; z-index: 999;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;
+      color: var(--green); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: .25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .85rem; font-weight: 500;
+      color: var(--muted); padding: 6px 14px; border-radius: 6px;
+      transition: color .2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 14px; right: 14px;
+      height: 2px; background: var(--green);
+      transform: scaleX(0); transition: transform .2s; border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .nav-links a.active::after { transform: scaleX(1); }
+    .menu-btn {
+      display: none; background: none; border: none;
+      color: var(--green); font-size: 1.2rem; cursor: pointer;
+    }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-left { padding-right: 20px; }
+    .hero-badge {
+      display: inline-block; font-size: .72rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); background: var(--green-chip);
+      border-radius: 50px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900; line-height: .95;
+      color: var(--green); letter-spacing: -1px; margin-bottom: 22px;
+    }
+    .hero-name span { color: var(--green-mid); }
+    .hero-tagline {
+      font-size: clamp(14px, 1.5vw, 17px); font-weight: 500;
+      color: var(--text); margin-bottom: 18px; opacity: .85;
+    }
+    .hero-desc {
+      font-size: .9rem; color: var(--muted); line-height: 1.85; max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 50px;
+      font-size: .88rem; font-weight: 600; text-decoration: none;
+      transition: all .22s; cursor: pointer; border: none;
+    }
+    .btn-solid { background: var(--green); color: var(--white); }
+    .btn-solid:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
+    .btn-outline:hover { background: var(--green-pale); transform: translateY(-2px); }
+
+    /* ── QUOTE CARD (right) ── */
+    .quote-card {
+      background: var(--green); border-radius: var(--r); padding: 32px 28px;
+      color: var(--white);
+    }
+    .quote-mark {
+      font-family: var(--font-serif); font-size: 5rem; line-height: .7;
+      opacity: .25; margin-bottom: 16px; display: block;
+    }
+    .quote-text {
+      font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700;
+      line-height: 1.6; margin-bottom: 20px; opacity: .95;
+    }
+    .quote-author { font-size: .78rem; opacity: .65; font-style: italic; }
+
+    /* ── CONTENT ── */
+    .content-area {
+      padding: 0 52px 72px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-label {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    /* ── SUMMARY CARDS ── */
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px; margin-bottom: 32px;
+    }
+    .summary-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 24px;
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .summary-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .summary-card:hover {
+      border-color: var(--green); transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,107,74,.12);
+    }
+    .summary-card:hover::after { transform: scaleX(1); }
+    .summary-card.highlight {
+      background: var(--green); border-color: var(--green);
+    }
+    .summary-card.highlight .s-title { color: var(--white); }
+    .summary-card.highlight .s-desc { color: rgba(255,255,255,.78); }
+    .summary-card.highlight::after { background: var(--white); }
+    .s-emoji { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+    .s-title {
+      font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700;
+      color: var(--green); margin-bottom: 10px;
+    }
+    .s-desc { font-size: .82rem; line-height: 1.85; color: var(--muted); }
+
+    /* ── REFLECTION BLOCK ── */
+    .reflection-block {
+      background: var(--white); border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 36px 44px; margin-bottom: 32px;
+    }
+    .reflection-block h3 {
+      font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700;
+      color: var(--green); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .reflection-block h3::before {
+      content: '//'; color: var(--green-mid);
+      font-family: var(--font-mono); font-size: .9rem;
+    }
+    .reflection-block p {
+      font-size: .88rem; line-height: 1.9; color: var(--muted); margin-bottom: 14px;
+    }
+    .reflection-block p:last-child { margin-bottom: 0; }
+
+    /* ── NAV CARDS ── */
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 16px;
+    }
+    .nav-card {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 22px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 14px;
+      text-decoration: none; transition: all .25s;
+      position: relative; overflow: hidden;
+    }
+    .nav-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .nav-card:hover {
+      border-color: var(--green); transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,107,74,.12);
+    }
+    .nav-card:hover::after { transform: scaleX(1); }
+    .nav-card-num {
+      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+      color: var(--green); opacity: .2; flex-shrink: 0;
+    }
+    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .nav-card-sub { font-size: .72rem; color: var(--muted); }
+    .nav-card-arrow {
+      margin-left: auto; color: var(--muted); font-size: .85rem;
+      transition: color .2s, transform .2s;
+    }
+    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 52px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .5rem; background: var(--white);
+    }
+    .site-footer p { font-size: .78rem; color: var(--muted); }
+    .site-footer a { color: var(--green); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: .08s; }
+    .reveal.d2 { transition-delay: .16s; }
+    .reveal.d3 { transition-delay: .24s; }
+    .reveal.d4 { transition-delay: .32s; }
+    .reveal.d5 { transition-delay: .40s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge  { animation: fadeUp .5s .05s both; }
+    .hero-name   { animation: fadeUp .6s .12s both; }
+    .hero-tagline{ animation: fadeUp .5s .22s both; }
+    .hero-desc   { animation: fadeUp .5s .30s both; }
+    .hero-btns   { animation: fadeUp .5s .38s both; }
+    .quote-card  { animation: fadeUp .5s .20s both; }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding-right: 0; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 0 20px; }
+      .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; right: 0;
+        flex-direction: column; background: var(--white);
+        border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .9rem 20px; border-bottom: 1px solid var(--border); border-radius: 0; }
+      .nav-links a.active::after { display: none; }
+      .nav-links a.active { border-left: 3px solid var(--green); }
+      .menu-btn { display: block; }
+      .hero { padding: 36px 20px 32px; gap: 24px; }
+      .content-area { padding: 0 20px 56px; }
+      .reflection-block { padding: 26px 22px; }
+      .site-footer { padding: 1.25rem 20px; flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a class="topbar-logo" href="index.html">Quách Đức Thiện</a>
-</div>
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">Quách Đức Thiện</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="about.html">Giới thiệu</a></li>
+    <li><a href="projects.html">Hành trình</a></li>
+    <li><a href="skills.html">Kỹ năng</a></li>
+    <li><a href="summary.html" class="active">Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
 
-<div class="content-wrap">
-<div class="summary-wrap">
+<div class="page-wrap">
 
-  <p class="section-eyebrow reveal">// 05 — tổng kết</p>
-  <h1 class="section-title reveal d1">Hành trình<br><span>học tập</span></h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-badge">// 05 — Tổng kết</span>
+      <h1 class="hero-name">Hành trình<br><span>học tập</span></h1>
+      <p class="hero-tagline">Nhìn lại một học kỳ đầy ý nghĩa</p>
+      <p class="hero-desc">
+        Một học kỳ với 7 bài thực hành, 8 kỹ năng mới, hơn 10 công cụ AI được khám phá —
+        không chỉ là kiến thức kỹ thuật mà còn là tư duy và cách tiếp cận
+        công nghệ một cách có trách nhiệm.
+      </p>
+    </div>
 
-  <div class="summary-cards">
-    <div class="summary-card reveal d2">
-      <div class="s-emoji">💡</div>
-      <div class="s-title">Kiến thức đạt được</div>
-      <div class="s-desc">
-        Nắm vững các kỹ năng số, tìm kiếm học thuật,
-        làm việc nhóm và ứng dụng AI trong học tập.
+    <!-- Quote card -->
+    <div class="quote-card">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">
+        Công nghệ là công cụ; tư duy mới là sức mạnh thực sự.
+      </p>
+      <p class="quote-author">— Cảm nhận sau học kỳ</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="content-area">
+
+    <p class="section-label reveal">Đánh giá tổng quan</p>
+    <div class="summary-cards">
+      <div class="summary-card reveal d1">
+        <span class="s-emoji">💡</span>
+        <div class="s-title">Kiến thức đạt được</div>
+        <div class="s-desc">
+          Nắm vững các kỹ năng số, tìm kiếm học thuật,
+          làm việc nhóm và ứng dụng AI trong học tập.
+        </div>
+      </div>
+      <div class="summary-card highlight reveal d2">
+        <span class="s-emoji">🚀</span>
+        <div class="s-title">Thành tựu nổi bật</div>
+        <div class="s-desc">
+          Hoàn thành toàn bộ bài tập học phần,
+          xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.
+        </div>
+      </div>
+      <div class="summary-card reveal d3">
+        <span class="s-emoji">🔧</span>
+        <div class="s-title">Thách thức vượt qua</div>
+        <div class="s-desc">
+          Học cách đánh giá nguồn tin, sử dụng AI có trách nhiệm
+          và phát triển tư duy phản biện.
+        </div>
       </div>
     </div>
-    <div class="summary-card highlight reveal d3">
-      <div class="s-emoji">🚀</div>
-      <div class="s-title">Thành tựu nổi bật</div>
-      <div class="s-desc">
-        Hoàn thành toàn bộ bài tập học phần,
-        xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.
-      </div>
+
+    <!-- REFLECTION -->
+    <div class="reflection-block reveal d2">
+      <h3>Cảm nhận cá nhân</h3>
+      <p>
+        Học phần đã giúp tôi phát triển không chỉ các kỹ năng công nghệ
+        mà còn cả khả năng tự học, làm việc nhóm và tư duy phản biện.
+      </p>
+      <p>
+        Việc tiếp cận các công cụ AI hiện đại cho tôi góc nhìn mới về cách
+        công nghệ hỗ trợ học tập, nghiên cứu và phát triển nghề nghiệp trong tương lai.
+      </p>
+      <p>
+        Trong thời gian tới, tôi mong muốn tiếp tục nghiên cứu sâu hơn về mạng máy tính,
+        an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
+      </p>
     </div>
-    <div class="summary-card reveal d4">
-      <div class="s-emoji">🔧</div>
-      <div class="s-title">Thách thức</div>
-      <div class="s-desc">
-        Học cách đánh giá nguồn tin, sử dụng AI có trách nhiệm
-        và phát triển tư duy phản biện.
-      </div>
+
+    <!-- NAV CARDS -->
+    <p class="section-label reveal">Quay lại khám phá</p>
+    <div class="nav-cards">
+      <a class="nav-card reveal d1" href="index.html">
+        <div class="nav-card-num">01</div>
+        <div>
+          <div class="nav-card-label">Trang chủ</div>
+          <div class="nav-card-sub">Giới thiệu bản thân</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d2" href="about.html">
+        <div class="nav-card-num">02</div>
+        <div>
+          <div class="nav-card-label">Giới thiệu</div>
+          <div class="nav-card-sub">Học vấn &amp; sở thích</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d3" href="projects.html">
+        <div class="nav-card-num">03</div>
+        <div>
+          <div class="nav-card-label">Hành trình</div>
+          <div class="nav-card-sub">7 bài tập học phần</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d4" href="skills.html">
+        <div class="nav-card-num">04</div>
+        <div>
+          <div class="nav-card-label">Kỹ năng</div>
+          <div class="nav-card-sub">8 kỹ năng đã học</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
     </div>
+
   </div>
 
-  <div class="reflection-block reveal d2">
-    <h3>Cảm nhận cá nhân</h3>
-    <p>
-      Học phần đã giúp tôi phát triển không chỉ các kỹ năng công nghệ
-      mà còn cả khả năng tự học, làm việc nhóm và tư duy phản biện.
-    </p>
-    <p>
-      Việc tiếp cận các công cụ AI hiện đại cho tôi góc nhìn mới về cách
-      công nghệ hỗ trợ học tập, nghiên cứu và phát triển nghề nghiệp trong tương lai.
-    </p>
-    <p>
-      Trong thời gian tới, tôi mong muốn tiếp tục nghiên cứu sâu hơn về mạng máy tính,
-      an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
-    </p>
-  </div>
-
-  <div class="cta-row reveal d3">
-    <a class="btn btn-solid" href="projects.html">
-      <i class="fa-solid fa-folder-open"></i> Xem lại hành trình
-    </a>
-    <a class="btn btn-outline" href="index.html">
-      <i class="fa-solid fa-house"></i> Trang chủ
-    </a>
-  </div>
-
-  <div class="page-nav reveal">
-    <a href="skills.html"><i class="fa-solid fa-arrow-left"></i> Kỹ năng</a>
-    <span class="page-nav-indicator">05 / 05</span>
-    <a href="index.html">Trang chủ <i class="fa-solid fa-house"></i></a>
-  </div>
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
 
 </div>
-</div>
-
-<footer class="site-footer">
-  <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
-  <p>UET – Đại học Quốc gia Hà Nội</p>
-</footer>
 
 <script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
   const obs = new IntersectionObserver(
     e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
     { threshold: 0.08 }
