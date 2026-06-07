@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
-    /* ── TOKENS ── */
     :root {
       --green:      #1e6b4a;
       --green-dark: #14503a;
@@ -113,10 +112,7 @@
       margin: 0 auto;
     }
 
-    /* Left column */
-    .hero-left {
-      padding-right: 20px;
-    }
+    .hero-left { padding-right: 20px; }
 
     .hero-badge {
       display: inline-block;
@@ -160,9 +156,7 @@
     .hero-desc a { color: var(--green); text-decoration: none; }
     .hero-desc a:hover { text-decoration: underline; }
 
-    .hero-btns {
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -173,20 +167,12 @@
       transition: all .22s;
       cursor: pointer; border: none;
     }
-    .btn-solid {
-      background: var(--green);
-      color: var(--white);
-    }
+    .btn-solid { background: var(--green); color: var(--white); }
     .btn-solid:hover { background: var(--green-dark); transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--green);
-      border: 2px solid var(--green);
-    }
+    .btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
     .btn-outline:hover { background: var(--green-pale); transform: translateY(-2px); }
 
-    /* Right cards */
-    .card-about, .card-info {
+    .card-about {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--r);
@@ -211,7 +197,6 @@
     }
     .card-about p:last-of-type { margin-bottom: 18px; }
 
-    /* Interest chip grid */
     .chip-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -230,13 +215,8 @@
       cursor: default;
     }
     .chip:hover { background: var(--green-chip); }
-    .chip.active-chip {
-      background: var(--green);
-      color: var(--white);
-      border-color: var(--green);
-    }
+    .chip.active-chip { background: var(--green); color: var(--white); border-color: var(--green); }
 
-    /* Info card */
     .card-info-title {
       font-family: var(--font-serif);
       font-size: 1.05rem;
@@ -255,78 +235,9 @@
       gap: 12px;
     }
     .info-row:last-child { border-bottom: none; }
-    .info-label {
-      font-size: .78rem;
-      color: var(--muted);
-      flex-shrink: 0;
-    }
-    .info-value {
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--text);
-      text-align: right;
-    }
-    .info-value.email {
-      font-family: var(--font-mono);
-      font-size: .72rem;
-      color: var(--green-mid);
-    }
-
-    /* ── NAV CARDS ── */
-    .nav-cards-wrap {
-      padding: 0 52px 72px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    .nav-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-    .nav-card {
-      display: flex; align-items: center; gap: 16px;
-      padding: 20px 22px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      text-decoration: none;
-      transition: all .25s;
-      position: relative; overflow: hidden;
-    }
-    .nav-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--green);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .3s;
-    }
-    .nav-card:hover {
-      border-color: var(--green);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(30,107,74,.12);
-    }
-    .nav-card:hover::after { transform: scaleX(1); }
-    .nav-card-num {
-      font-family: var(--font-mono);
-      font-size: 1.5rem; font-weight: 700;
-      color: var(--green); opacity: .2; flex-shrink: 0;
-    }
-    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-    .nav-card-sub { font-size: .72rem; color: var(--muted); }
-    .nav-card-arrow {
-      margin-left: auto; color: var(--muted); font-size: .85rem;
-      transition: color .2s, transform .2s;
-    }
-    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
+    .info-label { font-size: .78rem; color: var(--muted); flex-shrink: 0; }
+    .info-value { font-size: .82rem; font-weight: 600; color: var(--text); text-align: right; }
+    .info-value.email { font-family: var(--font-mono); font-size: .72rem; color: var(--green-mid); }
 
     /* ── FOOTER ── */
     .site-footer {
@@ -336,24 +247,9 @@
       flex-wrap: wrap; gap: .5rem;
       background: var(--white);
     }
-    .site-footer p {
-      font-size: .78rem;
-      color: var(--muted);
-    }
+    .site-footer p { font-size: .78rem; color: var(--muted); }
     .site-footer a { color: var(--green); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal.d1 { transition-delay: .08s; }
-    .reveal.d2 { transition-delay: .16s; }
-    .reveal.d3 { transition-delay: .24s; }
-    .reveal.d5 { transition-delay: .40s; }
-
-    /* Nav links hidden — navigation via nav-cards only */
-    .nav-links { display: none !important; }
-    .menu-btn  { display: none !important; }
 
     /* ── ANIMATE IN ── */
     @keyframes fadeUp {
@@ -389,7 +285,6 @@
       .nav-links a.active { border-left: 3px solid var(--green); }
       .menu-btn { display: block; }
       .hero { grid-template-columns: 1fr; padding: 36px 20px 40px; gap: 24px; }
-      .nav-cards-wrap { padding: 0 20px 56px; }
       .site-footer { padding: 1.25rem 20px; flex-direction: column; text-align: center; }
     }
   </style>
@@ -399,9 +294,9 @@
 <nav class="navbar">
   <a class="nav-logo" href="index.html">Quách Đức Thiện</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="index.html" class="active">Trang chủ</a></li>
     <li><a href="about.html">Giới thiệu</a></li>
-    <li><a href="projects.html">Dự án</a></li>
+    <li><a href="projects.html">Hành trình</a></li>
     <li><a href="skills.html">Kỹ năng</a></li>
     <li><a href="summary.html">Tổng kết</a></li>
   </ul>
@@ -410,10 +305,7 @@
 
 <div class="page-wrap">
 
-  <!-- HERO -->
   <section class="hero">
-
-    <!-- Left -->
     <div class="hero-left">
       <span class="hero-badge">Portfolio cá nhân</span>
       <h1 class="hero-name">Quách<br>Đức Thiện</h1>
@@ -424,10 +316,8 @@
         kỹ sư công nghệ chất lượng cao.<br><br>
         Hiện đang theo học tại <a href="https://uet.vnu.edu.vn" target="_blank">VNU–UET</a>.
       </p>
-
     </div>
 
-    <!-- Right: merged About + Info card -->
     <div class="card-about">
       <div class="card-title"><i class="fa-solid fa-user"></i> Giới thiệu</div>
       <p>Tôi là sinh viên Trường Đại học Công Nghệ, Đại học Quốc gia Hà Nội.</p>
@@ -463,55 +353,7 @@
         <span class="info-value email">25023532@vnu.edu.vn</span>
       </div>
     </div>
-
   </section>
-
-  <!-- NAV CARDS -->
-  <div class="nav-cards-wrap">
-    <p class="section-label">Khám phá</p>
-    <div class="nav-cards">
-      <a class="nav-card reveal d1" href="index.html">
-        <div class="nav-card-num">01</div>
-        <div>
-          <div class="nav-card-label">Trang chủ</div>
-          <div class="nav-card-sub">Giới thiệu bản thân</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d2" href="about.html">
-        <div class="nav-card-num">02</div>
-        <div>
-          <div class="nav-card-label">Giới thiệu</div>
-          <div class="nav-card-sub">Học vấn &amp; sở thích</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d3" href="projects.html">
-        <div class="nav-card-num">03</div>
-        <div>
-          <div class="nav-card-label">Hành trình</div>
-          <div class="nav-card-sub">7 bài tập học phần</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d4" href="skills.html">
-        <div class="nav-card-num">04</div>
-        <div>
-          <div class="nav-card-label">Kỹ năng</div>
-          <div class="nav-card-sub">8 kỹ năng đã học</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d5" href="summary.html">
-        <div class="nav-card-num">05</div>
-        <div>
-          <div class="nav-card-label">Tổng kết</div>
-          <div class="nav-card-sub">Cảm nhận &amp; định hướng</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-    </div>
-  </div>
 
   <footer class="site-footer">
     <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
@@ -524,12 +366,6 @@
   document.getElementById('menuBtn').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('open');
   });
-  const obs = new IntersectionObserver(
-    e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
