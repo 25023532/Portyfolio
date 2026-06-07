@@ -37,7 +37,6 @@
       overflow-x: hidden; min-height: 100vh;
     }
 
-    /* ── NAVBAR ── */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--nav-h); background: var(--white);
@@ -68,10 +67,8 @@
       color: var(--green); font-size: 1.2rem; cursor: pointer;
     }
 
-    /* ── PAGE WRAP ── */
     .page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
 
-    /* ── HERO ── */
     .hero {
       padding: 60px 52px 48px;
       display: grid;
@@ -98,7 +95,6 @@
       color: var(--text); margin-bottom: 18px; opacity: .85;
     }
 
-    /* ── RIGHT CARD ── */
     .card-main {
       background: var(--white); border: 1px solid var(--border);
       border-radius: var(--r); padding: 28px 26px;
@@ -139,7 +135,6 @@
       font-family: var(--font-mono); font-size: .72rem; color: var(--green-mid);
     }
 
-    /* ── CONTENT AREA ── */
     .content-area {
       padding: 0 52px 72px;
       max-width: 1100px; margin: 0 auto;
@@ -150,7 +145,6 @@
       color: var(--muted); margin-bottom: 16px;
     }
 
-    /* ── CARDS ROW ── */
     .cards-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,29 +174,7 @@
       font-size: .83rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px;
     }
     .detail-card p:last-child { margin-bottom: 0; }
-    .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .detail-card ul li {
-      font-size: .82rem; color: var(--muted);
-      padding-left: 16px; position: relative; line-height: 1.6;
-    }
-    .detail-card ul li::before {
-      content: '›'; position: absolute; left: 0;
-      color: var(--green); font-size: 1rem; line-height: 1.4;
-    }
 
-    /* info mini grid inside card */
-    .info-mini-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-    }
-    .info-mini-item .lbl {
-      font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
-      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 5px;
-    }
-    .info-mini-item .val {
-      font-weight: 600; font-size: .85rem; color: var(--text); word-break: break-all;
-    }
-
-    /* ── HOBBY CARDS ── */
     .hobby-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -222,42 +194,6 @@
     .hobby-title { font-size: .88rem; font-weight: 600; color: var(--green); margin-bottom: 3px; }
     .hobby-desc { font-size: .75rem; color: var(--muted); line-height: 1.5; }
 
-    /* ── NAV CARDS ── */
-    .nav-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px; margin-top: 48px;
-    }
-    .nav-card {
-      display: flex; align-items: center; gap: 16px;
-      padding: 20px 22px; background: var(--white);
-      border: 1px solid var(--border); border-radius: 14px;
-      text-decoration: none; transition: all .25s;
-      position: relative; overflow: hidden;
-    }
-    .nav-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: var(--green);
-      transform: scaleX(0); transform-origin: left; transition: transform .3s;
-    }
-    .nav-card:hover {
-      border-color: var(--green); transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(30,107,74,.12);
-    }
-    .nav-card:hover::after { transform: scaleX(1); }
-    .nav-card-num {
-      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
-      color: var(--green); opacity: .2; flex-shrink: 0;
-    }
-    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-    .nav-card-sub { font-size: .72rem; color: var(--muted); }
-    .nav-card-arrow {
-      margin-left: auto; color: var(--muted); font-size: .85rem;
-      transition: color .2s, transform .2s;
-    }
-    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
-
-    /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--border); padding: 1.5rem 52px;
       display: flex; justify-content: space-between; align-items: center;
@@ -267,14 +203,12 @@
     .site-footer a { color: var(--green); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
 
-    /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
     .reveal.d1 { transition-delay: .08s; }
     .reveal.d2 { transition-delay: .16s; }
     .reveal.d3 { transition-delay: .24s; }
     .reveal.d4 { transition-delay: .32s; }
-    .reveal.d5 { transition-delay: .40s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -285,7 +219,6 @@
     .hero-tagline { animation: fadeUp .5s .22s both; }
     .card-main    { animation: fadeUp .5s .20s both; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding-right: 0; }
@@ -324,7 +257,6 @@
 
 <div class="page-wrap">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <span class="hero-badge">// 02 — Về tôi</span>
@@ -332,7 +264,6 @@
       <p class="hero-tagline">Sinh viên ngành Mạng máy tính và Truyền thông dữ liệu</p>
     </div>
 
-    <!-- Right card: Học vấn & Định hướng -->
     <div class="card-main">
       <div class="card-label"><i class="fa-solid fa-graduation-cap"></i> Học vấn &amp; Định hướng</div>
       <p>
@@ -368,10 +299,8 @@
     </div>
   </section>
 
-  <!-- CONTENT -->
   <div class="content-area">
 
-    <!-- Mục tiêu nghề nghiệp -->
     <p class="section-label reveal">Mục tiêu nghề nghiệp</p>
     <div class="cards-row">
       <div class="detail-card reveal d1">
@@ -384,7 +313,6 @@
       </div>
     </div>
 
-    <!-- Sở thích -->
     <p class="section-label reveal" style="margin-top:8px;">Sở thích</p>
     <div class="hobby-grid">
       <div class="hobby-card reveal d1">
@@ -415,43 +343,6 @@
           <div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div>
         </div>
       </div>
-    </div>
-
-    <!-- NAV CARDS -->
-    <p class="section-label reveal" style="margin-top:48px;">Khám phá thêm</p>
-    <div class="nav-cards">
-      <a class="nav-card reveal d1" href="index.html">
-        <div class="nav-card-num">01</div>
-        <div>
-          <div class="nav-card-label">Trang chủ</div>
-          <div class="nav-card-sub">Giới thiệu bản thân</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d2" href="projects.html">
-        <div class="nav-card-num">03</div>
-        <div>
-          <div class="nav-card-label">Hành trình</div>
-          <div class="nav-card-sub">7 bài tập học phần</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d3" href="skills.html">
-        <div class="nav-card-num">04</div>
-        <div>
-          <div class="nav-card-label">Kỹ năng</div>
-          <div class="nav-card-sub">8 kỹ năng đã học</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
-      <a class="nav-card reveal d4" href="summary.html">
-        <div class="nav-card-num">05</div>
-        <div>
-          <div class="nav-card-label">Tổng kết</div>
-          <div class="nav-card-sub">Cảm nhận &amp; định hướng</div>
-        </div>
-        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
-      </a>
     </div>
 
   </div>
