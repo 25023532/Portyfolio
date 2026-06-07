@@ -106,10 +106,10 @@
     .hero {
       padding: 60px 52px 64px;
       display: grid;
-      grid-template-columns: 1fr 300px 280px;
-      gap: 28px;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
       align-items: start;
-      max-width: 1300px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -243,6 +243,9 @@
       font-weight: 700;
       color: var(--green);
       margin-bottom: 20px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      margin-top: 22px;
     }
 
     .info-row {
@@ -272,7 +275,7 @@
     /* ── NAV CARDS ── */
     .nav-cards-wrap {
       padding: 0 52px 72px;
-      max-width: 1300px;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .section-label {
@@ -359,15 +362,11 @@
     .hero-desc   { animation: fadeUp .5s .30s both; }
     .hero-btns   { animation: fadeUp .5s .38s both; }
     .card-about  { animation: fadeUp .5s .20s both; }
-    .card-info   { animation: fadeUp .5s .28s both; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .hero {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-      }
-      .hero-left { grid-column: 1 / -1; padding-right: 0; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding-right: 0; }
     }
 
     @media (max-width: 768px) {
@@ -431,7 +430,7 @@
       </div>
     </div>
 
-    <!-- Middle: About card -->
+    <!-- Right: merged About + Info card -->
     <div class="card-about">
       <div class="card-title"><i class="fa-solid fa-user"></i> Giới thiệu</div>
       <p>Tôi là sinh viên Trường Đại học Công Nghệ, Đại học Quốc gia Hà Nội.</p>
@@ -444,10 +443,7 @@
         <span class="chip">📡 IoT</span>
         <span class="chip">💻 Programming</span>
       </div>
-    </div>
 
-    <!-- Right: Quick info card -->
-    <div class="card-info">
       <div class="card-info-title">Thông tin nhanh</div>
       <div class="info-row">
         <span class="info-label">Họ tên</span>
