@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỹ năng | Quách Đức Thiện</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    .skills-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 60px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 24px 28px;
+      text-align: center;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,229,160,.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(0,229,160,.35);
+      transform: translateY(-7px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+
+    .skill-card:hover::after { opacity: 1; }
+
+    .skill-icon {
+      font-size: 38px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .skill-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .skill-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* Skills summary bar */
+    .skills-summary {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .skills-summary-item {}
+
+    .skills-summary-num {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .skills-summary-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 44px 60px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-nav a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+
+    .page-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .skills-wrap { padding: 60px 20px 0; }
+      .page-nav { padding: 32px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"              ><span class="num">01.</span>Trang chủ</a></li>
+    <li><a href="about.html"              ><span class="num">02.</span>Giới thiệu</a></li>
+    <li><a href="projects.html"           ><span class="num">03.</span>Hành trình</a></li>
+    <li><a href="skills.html" class="active"><span class="num">04.</span>Kỹ năng</a></li>
+    <li><a href="summary.html"            ><span class="num">05.</span>Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<div class="page-wrap">
+  <div class="skills-wrap">
+
+    <p class="eyebrow">// 04 — kỹ năng</p>
+    <h1 class="page-title">Kỹ năng<br><span>đã học</span></h1>
+
+    <!-- Summary stats -->
+    <div class="skills-summary">
+      <div class="skills-summary-item">
+        <div class="skills-summary-num">8</div>
+        <div class="skills-summary-label">Kỹ năng</div>
+      </div>
+      <div class="skills-summary-item">
+        <div class="skills-summary-num">7</div>
+        <div class="skills-summary-label">Bài thực hành</div>
+      </div>
+      <div class="skills-summary-item">
+        <div class="skills-summary-num">10+</div>
+        <div class="skills-summary-label">Công cụ AI</div>
+      </div>
+      <div class="skills-summary-item">
+        <div class="skills-summary-num">1</div>
+        <div class="skills-summary-label">Học kỳ</div>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-folder-tree"></i></span>
+        <div class="skill-title">Quản lý dữ liệu</div>
+        <div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <div class="skill-title">Tìm kiếm học thuật</div>
+        <div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-brain"></i></span>
+        <div class="skill-title">Prompt Engineering</div>
+        <div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-users"></i></span>
+        <div class="skill-title">Làm việc nhóm</div>
+        <div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-robot"></i></span>
+        <div class="skill-title">AI Tools</div>
+        <div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <div class="skill-title">An toàn thông tin</div>
+        <div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-network-wired"></i></span>
+        <div class="skill-title">Mạng máy tính</div>
+        <div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
+        <div class="skill-title">Lập trình</div>
+        <div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div>
+      </div>
+
+    </div>
+
+    <div class="page-nav">
+      <a href="projects.html"><i class="fa-solid fa-arrow-left"></i> Hành trình</a>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">04 / 05</span>
+      <a href="summary.html">Tổng kết <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

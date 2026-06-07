@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tổng kết | Quách Đức Thiện</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    .summary-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 72px 60px 0;
+    }
+
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,229,160,.3);
+    }
+
+    .summary-card.highlight {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .summary-card.highlight .summary-card-title { color: var(--bg); }
+    .summary-card.highlight .summary-card-desc  { color: rgba(11,15,26,.75); }
+
+    .summary-emoji { font-size: 44px; margin-bottom: 18px; }
+
+    .summary-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .summary-card-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* Reflection */
+    .reflection-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 14px 14px 0;
+      padding: 40px 48px;
+      margin-bottom: 0;
+    }
+
+    .reflection-block h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reflection-block h3::before {
+      content: '//';
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 16px;
+    }
+
+    .reflection-block p {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 2;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .reflection-block p:last-child { margin-bottom: 0; }
+
+    /* Back to home CTA */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 48px 0 0;
+      flex-wrap: wrap;
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 44px 60px 0;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .page-nav a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+
+    .page-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .summary-wrap { padding: 60px 20px 0; }
+      .reflection-block { padding: 28px 24px; }
+      .page-nav { padding: 32px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"               ><span class="num">01.</span>Trang chủ</a></li>
+    <li><a href="about.html"               ><span class="num">02.</span>Giới thiệu</a></li>
+    <li><a href="projects.html"            ><span class="num">03.</span>Hành trình</a></li>
+    <li><a href="skills.html"              ><span class="num">04.</span>Kỹ năng</a></li>
+    <li><a href="summary.html" class="active"><span class="num">05.</span>Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<div class="page-wrap">
+  <div class="summary-wrap">
+
+    <p class="eyebrow">// 05 — tổng kết</p>
+    <h1 class="page-title">Hành trình<br><span>học tập</span></h1>
+
+    <div class="summary-cards">
+      <div class="summary-card">
+        <div class="summary-emoji">💡</div>
+        <div class="summary-card-title">Kiến thức đạt được</div>
+        <div class="summary-card-desc">
+          Nắm vững các kỹ năng số, tìm kiếm học thuật,
+          làm việc nhóm và ứng dụng AI trong học tập.
+        </div>
+      </div>
+
+      <div class="summary-card highlight">
+        <div class="summary-emoji">🚀</div>
+        <div class="summary-card-title">Thành tựu nổi bật</div>
+        <div class="summary-card-desc">
+          Hoàn thành toàn bộ bài tập học phần,
+          xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-emoji">🔧</div>
+        <div class="summary-card-title">Thách thức</div>
+        <div class="summary-card-desc">
+          Học cách đánh giá nguồn tin, sử dụng AI có trách nhiệm
+          và phát triển tư duy phản biện.
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection-block">
+      <h3>Cảm nhận cá nhân</h3>
+      <p>
+        Học phần đã giúp tôi phát triển không chỉ các kỹ năng công nghệ
+        mà còn cả khả năng tự học, làm việc nhóm và tư duy phản biện.
+      </p>
+      <p>
+        Việc tiếp cận các công cụ AI hiện đại cho tôi góc nhìn mới về cách
+        công nghệ hỗ trợ học tập, nghiên cứu và phát triển nghề nghiệp trong tương lai.
+      </p>
+      <p>
+        Trong thời gian tới, tôi mong muốn tiếp tục nghiên cứu sâu hơn về mạng máy tính,
+        an toàn thông tin và các ứng dụng AI trong hệ thống mạng.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-row">
+      <a class="btn btn-accent" href="projects.html">
+        <i class="fa-solid fa-folder-open"></i> Xem lại hành trình
+      </a>
+      <a class="btn btn-outline" href="index.html">
+        <i class="fa-solid fa-house"></i> Trang chủ
+      </a>
+    </div>
+
+    <div class="page-nav">
+      <a href="skills.html"><i class="fa-solid fa-arrow-left"></i> Kỹ năng</a>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">05 / 05</span>
+      <a href="index.html">Trang chủ <i class="fa-solid fa-house"></i></a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

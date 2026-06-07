@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới thiệu | Quách Đức Thiện</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    .about-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 60px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 0;
+    }
+
+    /* Left column cards */
+    .about-card-stack { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Right column — hobbies */
+    .hobbies-col {}
+
+    .hobbies-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hobby-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .hobby-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .hobby-item:hover {
+      border-color: rgba(0,229,160,.35);
+      transform: translateX(5px);
+    }
+
+    .hobby-icon { font-size: 26px; flex-shrink: 0; }
+
+    .hobby-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .hobby-desc {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Page nav bottom */
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 60px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-nav a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+
+    .page-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .about-wrap { padding: 60px 20px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .page-nav { padding: 32px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"              ><span class="num">01.</span>Trang chủ</a></li>
+    <li><a href="about.html"    class="active"><span class="num">02.</span>Giới thiệu</a></li>
+    <li><a href="projects.html"           ><span class="num">03.</span>Hành trình</a></li>
+    <li><a href="skills.html"             ><span class="num">04.</span>Kỹ năng</a></li>
+    <li><a href="summary.html"            ><span class="num">05.</span>Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<div class="page-wrap">
+  <div class="about-wrap">
+
+    <p class="eyebrow">// 02 — về tôi</p>
+    <h1 class="page-title">Giới thiệu<br><span>bản thân</span></h1>
+
+    <div class="about-grid">
+
+      <!-- LEFT: text cards -->
+      <div class="about-card-stack">
+        <div class="card">
+          <h3>Học vấn &amp; Định hướng</h3>
+          <p>
+            Tôi hiện đang theo học ngành
+            <strong style="color:var(--accent)">Mạng máy tính và Truyền thông dữ liệu</strong>
+            tại Trường Đại học Công Nghệ – ĐHQGHN.
+          </p>
+          <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
+          <ul>
+            <li>Thiết kế và quản trị hệ thống mạng</li>
+            <li>An toàn thông tin và bảo mật</li>
+            <li>Điện toán đám mây</li>
+            <li>AI và ứng dụng công nghệ số</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Mục tiêu nghề nghiệp</h3>
+          <p>
+            Trở thành kỹ sư công nghệ có khả năng triển khai, vận hành
+            và bảo vệ các hệ thống thông tin hiện đại. Không ngừng học hỏi
+            để bắt kịp nhịp độ phát triển của công nghệ toàn cầu.
+          </p>
+        </div>
+
+        <!-- Quick info row -->
+        <div class="card" style="padding: 20px 28px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Trường</div>
+              <div style="font-weight:700;font-size:13px;">UET – VNU</div>
+            </div>
+            <div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Khóa</div>
+              <div style="font-weight:700;font-size:13px;">K70I</div>
+            </div>
+            <div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">MSSV</div>
+              <div style="font-weight:700;font-size:13px;">25023532</div>
+            </div>
+            <div>
+              <div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;">Email</div>
+              <div style="font-weight:700;font-size:13px;word-break:break-all;">25023532@vnu.edu.vn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: hobbies -->
+      <div class="hobbies-col">
+        <div class="hobbies-label">// Sở thích</div>
+        <div class="hobby-list">
+          <div class="hobby-item">
+            <span class="hobby-icon">📚</span>
+            <div>
+              <div class="hobby-title">Đọc truyện</div>
+              <div class="hobby-desc">Yêu thích khám phá các thể loại truyện phong phú</div>
+            </div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">🎵</span>
+            <div>
+              <div class="hobby-title">Nghe nhạc</div>
+              <div class="hobby-desc">Âm nhạc giúp tôi thư giãn và tập trung hơn</div>
+            </div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">🎮</span>
+            <div>
+              <div class="hobby-title">Chơi game</div>
+              <div class="hobby-desc">Rèn luyện tư duy chiến lược và phản xạ</div>
+            </div>
+          </div>
+          <div class="hobby-item">
+            <span class="hobby-icon">⚽</span>
+            <div>
+              <div class="hobby-title">Chơi thể thao</div>
+              <div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Page nav -->
+    <div class="page-nav">
+      <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">02 / 05</span>
+      <a href="projects.html">Hành trình <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

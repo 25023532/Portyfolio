@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hành trình | Quách Đức Thiện</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    .projects-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 60px 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,229,160,.3);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.35);
+    }
+
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+      opacity: .8;
+    }
+
+    .project-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .project-desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.85;
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1px solid rgba(0,229,160,.3);
+      border-radius: 7px;
+      align-self: flex-start;
+      transition: all .2s;
+      font-weight: 500;
+    }
+
+    .project-link:hover {
+      background: rgba(0,229,160,.08);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 44px 60px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-nav a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+
+    .page-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .projects-wrap { padding: 60px 20px 0; }
+      .page-nav { padding: 32px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"               ><span class="num">01.</span>Trang chủ</a></li>
+    <li><a href="about.html"               ><span class="num">02.</span>Giới thiệu</a></li>
+    <li><a href="projects.html" class="active"><span class="num">03.</span>Hành trình</a></li>
+    <li><a href="skills.html"              ><span class="num">04.</span>Kỹ năng</a></li>
+    <li><a href="summary.html"             ><span class="num">05.</span>Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<div class="page-wrap">
+  <div class="projects-wrap">
+
+    <p class="eyebrow">// 03 — hành trình học tập</p>
+    <h1 class="page-title">Bài tập &amp;<br><span>Dự án học phần</span></h1>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-num">// 01</div>
+        <h3 class="project-title">Thao tác cơ bản với tệp tin và thư mục</h3>
+        <p class="project-desc">
+          Thực hành toàn bộ quy trình quản lý tệp trên Windows: tạo thư mục
+          <em>ThucHanh_QuachDucThien</em>, tạo và đổi tên tệp .txt,
+          sao chép, di chuyển, xóa thông thường và xóa vĩnh viễn (Shift+Delete),
+          đồng thời khôi phục tệp từ Recycle Bin.
+        </p>
+        <a class="project-link" href="pdf/Bai1.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 02</div>
+        <h3 class="project-title">Tìm kiếm và đánh giá thông tin học thuật</h3>
+        <p class="project-desc">
+          Thu thập và đánh giá 12 tài liệu về ứng dụng Machine Learning
+          trong An toàn thông tin từ IEEE, Elsevier, Springer và NIST.
+          Xây dựng bộ tiêu chí đánh giá 5 chiều và tổng hợp xu hướng nghiên cứu
+          IDS dựa trên Deep Learning giai đoạn 2020–2024.
+        </p>
+        <a class="project-link" href="pdf/Bai2.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 03</div>
+        <h3 class="project-title">Viết Prompt hiệu quả cho các tác vụ học tập</h3>
+        <p class="project-desc">
+          So sánh thực nghiệm 3 mức prompt trên 3 tác vụ: tóm tắt tài liệu kỹ thuật,
+          giải thích thuật toán Quine-McCluskey và tạo bộ câu hỏi ôn tập theo thang Bloom.
+          Đúc kết 8 nguyên tắc viết prompt: Role Prompting, Chain-of-Thought, Few-shot,
+          Constraint Prompting.
+        </p>
+        <a class="project-link" href="pdf/Bai3.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 04</div>
+        <h3 class="project-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+        <p class="project-desc">
+          Triển khai hệ sinh thái làm việc nhóm gồm 6 công cụ trong 1 tuần:
+          GitHub Projects (Kanban + Pull Request), Google Docs (Suggesting Mode),
+          IntelliJ IDEA (Git integration), Google Drive (phân quyền theo vai trò)
+          và Discord/Messenger. Ghi lại thách thức và cách giải quyết.
+        </p>
+        <a class="project-link" href="pdf/Bai4.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 05</div>
+        <h3 class="project-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
+        <p class="project-desc">
+          Tạo infographic A3 về "AI trong Giáo dục" qua 3 giai đoạn:
+          ChatGPT (cấu trúc) + Gemini (kiểm chứng) + Claude (giọng văn);
+          DALL·E 3 và Stable Diffusion tạo hình ảnh;
+          Canva AI và Adobe Firefly thiết kế layout.
+          Thời gian giảm ~65% so với truyền thống.
+        </p>
+        <a class="project-link" href="pdf/Bai5.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 06</div>
+        <h3 class="project-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
+        <p class="project-desc">
+          Phân tích chính sách sử dụng AI của ĐHQGHN và thực hành viết bài luận
+          về tác động AI đến thị trường lao động Việt Nam. Xây dựng 7 nguyên tắc cá nhân:
+          tư duy trước–AI sau, minh bạch tuyệt đối, kiểm chứng độc lập số liệu,
+          giữ giọng văn cá nhân.
+        </p>
+        <a class="project-link" href="pdf/Bai6.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">// 07</div>
+        <h3 class="project-title">Phân tích tài liệu với trợ lý nghiên cứu AI</h3>
+        <p class="project-desc">
+          Sử dụng Elicit và Consensus để hệ thống hóa 5 bài báo khoa học về ứng dụng
+          Graphene trong pin năng lượng (Li-ion, Na-ion, siêu tụ điện). Phân tích điểm
+          thống nhất, sự khác biệt phương pháp và hạn chế tồn tại,
+          đề xuất hướng nghiên cứu tiếp theo.
+        </p>
+        <a class="project-link" href="pdf/Bai7.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i> Xem PDF
+        </a>
+      </div>
+
+    </div>
+
+    <div class="page-nav">
+      <a href="about.html"><i class="fa-solid fa-arrow-left"></i> Giới thiệu</a>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--muted);">03 / 05</span>
+      <a href="skills.html">Kỹ năng <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện</p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
