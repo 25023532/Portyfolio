@@ -4,221 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | Quách Đức Thiện</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ═══════════════════════════════════
-       CSS VARIABLES & BASE
-       (Dự phòng khi css/style.css chưa load)
-    ═══════════════════════════════════ */
-    :root {
-      --bg:      #0b0f1a;
-      --surface: #131929;
-      --border:  rgba(255,255,255,.08);
-      --text:    #e8eaf0;
-      --muted:   #7a8499;
-      --accent:  #00e5a0;
-      --accent2: #0ea5e9;
-      --mono:    'JetBrains Mono', 'Courier New', monospace;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* ── NAVBAR ── */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 64px;
-      background: rgba(11,15,26,.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 60px;
-      z-index: 1000;
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--accent); }
-
-    .nav-links .num { color: var(--accent); margin-right: 4px; }
-
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--accent);
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    /* ── PAGE SYSTEM ── */
-    .page { display: none; padding-top: 64px; min-height: 100vh; }
-    .page.active { display: block; }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .btn-accent {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    .btn-accent:hover { background: #00c98d; transform: translateY(-2px); }
-
-    .btn-outline {
-      border: 1px solid rgba(0,229,160,.4);
-      color: var(--accent);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background: rgba(0,229,160,.08);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* ── SECTION EYEBROW ── */
-    .section-eyebrow {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    /* ── CARD ── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-    }
-
-    .card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-
-    .card p {
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 2;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .card ul { list-style: none; margin: 8px 0; }
-
-    .card li {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--muted);
-      padding: 7px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .card li::before { content: '▸'; color: var(--accent); flex-shrink: 0; }
-
-    /* ═══════════════════════════════════
-       PAGE 1 — TRANG CHỦ
-    ═══════════════════════════════════ */
-    #page-home { display: none; flex-direction: column; }
-    #page-home.active { display: flex; }
-
+    /* ── HERO BANNER ── */
     .hero-banner {
-      height: 42vh;
-      background: linear-gradient(180deg,
-        rgba(11,15,26,0) 0%,
-        rgba(11,15,26,.85) 80%,
-        var(--bg) 100%),
+      height: 52vh;
+      background:
+        linear-gradient(180deg, rgba(11,15,26,0) 0%, rgba(11,15,26,.92) 85%, var(--bg) 100%),
         url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
-      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
     }
 
+    .hero-banner-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      padding: 0 80px 32px;
+      opacity: .8;
+    }
+
+    /* ── HERO BODY ── */
     .hero-body {
-      padding: 60px 80px 50px;
-      max-width: 900px;
+      padding: 48px 80px 56px;
+      max-width: 860px;
     }
 
     .hero-greeting {
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 12px;
       color: var(--accent);
-      margin-bottom: 18px;
-      letter-spacing: 1px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      opacity: .9;
     }
 
     .hero-name {
-      font-size: clamp(52px, 7vw, 88px);
-      font-weight: 800;
-      line-height: 1.0;
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 0.95;
       color: var(--text);
-      margin-bottom: 20px;
-      letter-spacing: -2px;
+      margin-bottom: 24px;
+      letter-spacing: -3px;
     }
 
     .hero-name span { color: var(--accent); }
 
     .hero-tagline {
-      font-weight: 700;
-      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 600;
+      font-size: clamp(18px, 2.5vw, 24px);
       color: var(--text);
       margin-bottom: 20px;
+      opacity: .85;
     }
 
     .hero-desc {
@@ -226,28 +66,31 @@
       font-size: 13px;
       line-height: 1.9;
       color: var(--muted);
-      max-width: 560px;
-      margin-bottom: 32px;
+      max-width: 520px;
+      margin-bottom: 36px;
     }
 
     .hero-desc a { color: var(--accent2); text-decoration: none; }
 
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
+    /* ── INFO GRID ── */
     .hero-info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 12px;
-      padding: 40px 80px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
       border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .info-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px 20px;
+      background: var(--bg);
+      padding: 24px 28px;
+      transition: background .2s;
     }
+
+    .info-item:hover { background: var(--surface); }
 
     .info-item .label {
       font-family: var(--mono);
@@ -255,7 +98,7 @@
       color: var(--muted);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .info-item .value {
@@ -265,101 +108,56 @@
       word-break: break-all;
     }
 
+    /* ── INTEREST CHIPS ── */
     .interest-row {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      padding: 0 80px 60px;
+      padding: 36px 80px 64px;
     }
 
     .interest-chip {
       font-family: var(--mono);
       font-size: 12px;
-      padding: 7px 16px;
+      padding: 8px 18px;
       border-radius: 50px;
-      background: rgba(14,165,233,.08);
+      background: rgba(14,165,233,.07);
       color: var(--accent2);
       border: 1px solid rgba(14,165,233,.2);
+      transition: all .2s;
     }
 
-    /* ═══════════════════════════════════
-       PAGE 2 — GIỚI THIỆU
-    ═══════════════════════════════════ */
-    .about-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 60px;
+    .interest-chip:hover {
+      background: rgba(14,165,233,.14);
+      border-color: rgba(14,165,233,.45);
     }
 
-    .about-grid {
+    /* ── NAV CARDS (bottom) ── */
+    .nav-cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 48px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      padding: 0 80px 80px;
     }
 
-    .hobby-list { display: flex; flex-direction: column; gap: 14px; }
-
-    .hobby-item {
+    .nav-card {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 16px 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .hobby-item:hover { border-color: rgba(0,229,160,.35); transform: translateX(4px); }
-    .hobby-icon { font-size: 26px; flex-shrink: 0; }
-
-    .hobby-title {
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--accent);
-      margin-bottom: 3px;
-    }
-
-    .hobby-desc {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ═══════════════════════════════════
-       PAGE 3 — HÀNH TRÌNH
-    ═══════════════════════════════════ */
-    .projects-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 60px;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .project-card {
+      padding: 20px 24px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      transition: border-color .25s, transform .25s;
+      text-decoration: none;
+      transition: all .25s;
       position: relative;
       overflow: hidden;
     }
 
-    .project-card::before {
+    .nav-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       transform: scaleX(0);
@@ -367,265 +165,93 @@
       transition: transform .3s;
     }
 
-    .project-card:hover { border-color: rgba(0,229,160,.35); transform: translateY(-6px); }
-    .project-card:hover::before { transform: scaleX(1); }
+    .nav-card:hover {
+      border-color: rgba(0,229,160,.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
 
-    .project-num {
+    .nav-card:hover::after { transform: scaleX(1); }
+
+    .nav-card-num {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: .3;
+      flex-shrink: 0;
+    }
+
+    .nav-card-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .nav-card-sub {
       font-family: var(--mono);
       font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-card-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 14px;
+      transition: color .2s, transform .2s;
+    }
+
+    .nav-card:hover .nav-card-arrow {
       color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-    }
-
-    .project-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-      line-height: 1.4;
-    }
-
-    .project-desc {
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.85;
-      color: var(--muted);
-      flex: 1;
-      margin-bottom: 24px;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 9px 18px;
-      border: 1px solid rgba(0,229,160,.35);
-      border-radius: 6px;
-      align-self: flex-start;
-      transition: all .2s;
-    }
-
-    .project-link:hover { background: rgba(0,229,160,.08); border-color: var(--accent); }
-
-    /* ═══════════════════════════════════
-       PAGE 4 — KỸ NĂNG
-    ═══════════════════════════════════ */
-    .skills-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 60px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 48px;
-    }
-
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 24px;
-      text-align: center;
-      transition: border-color .25s, transform .25s;
-    }
-
-    .skill-card:hover { border-color: rgba(0,229,160,.4); transform: translateY(-6px); }
-
-    .skill-icon { font-size: 36px; color: var(--accent); margin-bottom: 16px; }
-
-    .skill-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .skill-desc {
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    /* ═══════════════════════════════════
-       PAGE 5 — TỔNG KẾT
-    ═══════════════════════════════════ */
-    .summary-wrap {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 80px 60px;
-    }
-
-    .summary-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-      margin-bottom: 48px;
-    }
-
-    .summary-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      text-align: center;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .summary-card:hover { transform: translateY(-5px); border-color: rgba(0,229,160,.3); }
-
-    .summary-card.highlight { background: var(--accent); border-color: var(--accent); }
-    .summary-card.highlight .summary-card-title,
-    .summary-card.highlight .summary-card-desc { color: var(--bg); }
-
-    .summary-emoji { font-size: 44px; margin-bottom: 18px; }
-
-    .summary-card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .summary-card-desc {
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.9;
-      color: var(--muted);
-    }
-
-    .reflection-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 12px 12px 0;
-      padding: 40px 44px;
-    }
-
-    .reflection-block h3 {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 24px;
-    }
-
-    .reflection-block p {
-      font-family: var(--mono);
-      font-size: 13px;
-      line-height: 2;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .reflection-block p:last-child { margin-bottom: 0; }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 60px;
-    }
-
-    .site-footer p {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .site-footer a { color: var(--accent); text-decoration: none; }
-
-    /* ── MOBILE NAV ── */
-    .nav-links.open {
-      display: flex !important;
-      flex-direction: column;
-      position: absolute;
-      top: 64px; right: 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 28px;
-      gap: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.4);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .hero-body { padding: 50px 50px 40px; }
-      .hero-info-grid { padding: 32px 50px; }
-      .interest-row { padding: 0 50px 50px; }
+      transform: translateX(4px);
     }
 
     @media (max-width: 768px) {
-      .navbar { padding: 0 24px; }
-      .nav-links { display: none; }
-      .menu-btn { display: block; }
-      .hero-body { padding: 40px 24px; }
-      .hero-info-grid { padding: 28px 24px; }
-      .interest-row { padding: 0 24px 40px; }
-      .about-wrap, .projects-wrap, .skills-wrap, .summary-wrap { padding: 60px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .site-footer { padding: 24px; }
-      .hero-btns { flex-direction: column; }
-      .reflection-block { padding: 28px 24px; }
+      .hero-body { padding: 36px 20px 40px; }
+      .hero-banner-label { padding: 0 20px 24px; }
+      .interest-row { padding: 28px 20px 40px; }
+      .nav-cards { padding: 0 20px 60px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════ NAVBAR ══════════════ -->
 <nav class="navbar">
-  <a class="nav-logo" href="#" onclick="showPage('home');return false;">&#60; QDT /&#62;</a>
-
+  <a class="nav-logo" href="index.html">&lt; QDT /&gt;</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#" onclick="showPage('home');return false;"     id="nav-home">    <span class="num">01.</span> Trang chủ</a></li>
-    <li><a href="#" onclick="showPage('about');return false;"    id="nav-about">   <span class="num">02.</span> Giới thiệu</a></li>
-    <li><a href="#" onclick="showPage('projects');return false;" id="nav-projects"><span class="num">03.</span> Hành trình</a></li>
-    <li><a href="#" onclick="showPage('skills');return false;"   id="nav-skills">  <span class="num">04.</span> Kỹ năng</a></li>
-    <li><a href="#" onclick="showPage('summary');return false;"  id="nav-summary"> <span class="num">05.</span> Tổng kết</a></li>
+    <li><a href="index.html"    class="active"><span class="num">01.</span>Trang chủ</a></li>
+    <li><a href="about.html"              ><span class="num">02.</span>Giới thiệu</a></li>
+    <li><a href="projects.html"           ><span class="num">03.</span>Hành trình</a></li>
+    <li><a href="skills.html"             ><span class="num">04.</span>Kỹ năng</a></li>
+    <li><a href="summary.html"            ><span class="num">05.</span>Tổng kết</a></li>
   </ul>
-
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">
-    <i class="fa-solid fa-bars"></i>
-  </button>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
 </nav>
 
-<!-- ══════════════════════════════════════
-     PAGE 1 — TRANG CHỦ
-══════════════════════════════════════ -->
-<div class="page active" id="page-home">
+<div class="page-wrap" style="padding-top:64px;">
 
-  <div class="hero-banner"></div>
+  <div class="hero-banner">
+    <span class="hero-banner-label">// PORTFOLIO CÁ NHÂN — 2025</span>
+  </div>
 
   <div class="hero-body">
-    <p class="hero-greeting">&#47;&#47; Xin chào, tôi là</p>
+    <p class="hero-greeting">// Xin chào, tôi là</p>
     <h1 class="hero-name">Quách Đức<br><span>Thiện.</span></h1>
     <p class="hero-tagline">Đam mê dẫn lối. Bền bỉ thực thi.</p>
     <p class="hero-desc">
       Sinh viên ngành Mạng máy tính và Truyền thông dữ liệu
       (Computer Networking &amp; Data Communication).
-      Hiện đang theo học tại <a href="https://uet.vnu.edu.vn" target="_blank">VNU–UET</a>.
+      Hiện đang theo học tại
+      <a href="https://uet.vnu.edu.vn" target="_blank">VNU–UET</a>.
       Một người có chiều sâu nội tâm, yêu thích sự tối giản
       và luôn tò mò về thế giới xung quanh.
     </p>
     <div class="hero-btns">
-      <a class="btn btn-accent" href="#" onclick="showPage('projects');return false;">
+      <a class="btn btn-accent" href="projects.html">
         <i class="fa-solid fa-folder-open"></i> Xem hành trình
       </a>
-      <a class="btn btn-outline" href="#" onclick="showPage('summary');return false;">
+      <a class="btn btn-outline" href="summary.html">
         <i class="fa-solid fa-flag-checkered"></i> Tổng kết
       </a>
     </div>
@@ -649,189 +275,52 @@
     <span class="interest-chip">💻 Programming</span>
   </div>
 
-  <footer class="site-footer">
+  <!-- Navigation cards -->
+  <div class="nav-cards">
+    <a class="nav-card" href="about.html">
+      <div class="nav-card-num">02</div>
+      <div>
+        <div class="nav-card-label">Giới thiệu</div>
+        <div class="nav-card-sub">Học vấn &amp; sở thích</div>
+      </div>
+      <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+    </a>
+    <a class="nav-card" href="projects.html">
+      <div class="nav-card-num">03</div>
+      <div>
+        <div class="nav-card-label">Hành trình</div>
+        <div class="nav-card-sub">7 bài tập học phần</div>
+      </div>
+      <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+    </a>
+    <a class="nav-card" href="skills.html">
+      <div class="nav-card-num">04</div>
+      <div>
+        <div class="nav-card-label">Kỹ năng</div>
+        <div class="nav-card-sub">8 kỹ năng đã học</div>
+      </div>
+      <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+    </a>
+    <a class="nav-card" href="summary.html">
+      <div class="nav-card-num">05</div>
+      <div>
+        <div class="nav-card-label">Tổng kết</div>
+        <div class="nav-card-sub">Cảm nhận &amp; định hướng</div>
+      </div>
+      <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+    </a>
+  </div>
+
+  <footer class="site-footer" style="margin-top:0;">
     <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
     <p>UET – Đại học Quốc gia Hà Nội</p>
   </footer>
 </div>
 
-<!-- ══════════════════════════════════════
-     PAGE 2 — GIỚI THIỆU
-══════════════════════════════════════ -->
-<div class="page" id="page-about">
-  <div class="about-wrap">
-
-    <p class="section-eyebrow">&#47;&#47; 02 — về tôi</p>
-    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:0;">
-      Giới thiệu<br><span style="color:var(--accent)">bản thân</span>
-    </h2>
-
-    <div class="about-grid">
-      <div>
-        <div class="card" style="margin-bottom:24px;">
-          <h3>Học vấn &amp; Định hướng</h3>
-          <p>Tôi hiện đang theo học ngành <strong style="color:var(--accent)">Mạng máy tính và Truyền thông dữ liệu</strong> tại Trường Đại học Công Nghệ – ĐHQGHN.</p>
-          <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
-          <ul>
-            <li>Thiết kế và quản trị hệ thống mạng</li>
-            <li>An toàn thông tin và bảo mật</li>
-            <li>Điện toán đám mây</li>
-            <li>AI và ứng dụng công nghệ số</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Mục tiêu nghề nghiệp</h3>
-          <p>Trở thành kỹ sư công nghệ có khả năng triển khai, vận hành và bảo vệ các hệ thống thông tin hiện đại. Không ngừng học hỏi để bắt kịp nhịp độ phát triển của công nghệ toàn cầu.</p>
-        </div>
-      </div>
-
-      <div>
-        <p class="section-eyebrow" style="margin-bottom:20px;">&#47;&#47; sở thích</p>
-        <div class="hobby-list">
-          <div class="hobby-item"><span class="hobby-icon">📚</span><div><div class="hobby-title">Đọc truyện</div><div class="hobby-desc">Yêu thích khám phá các thể loại truyện phong phú</div></div></div>
-          <div class="hobby-item"><span class="hobby-icon">🎵</span><div><div class="hobby-title">Nghe nhạc</div><div class="hobby-desc">Âm nhạc giúp tôi thư giãn và tập trung hơn</div></div></div>
-          <div class="hobby-item"><span class="hobby-icon">🎮</span><div><div class="hobby-title">Chơi game</div><div class="hobby-desc">Rèn luyện tư duy chiến lược và phản xạ</div></div></div>
-          <div class="hobby-item"><span class="hobby-icon">⚽</span><div><div class="hobby-title">Chơi thể thao</div><div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <p>© 2025 Quách Đức Thiện</p>
-    <p>Trang 02 / 05 — <a href="#" onclick="showPage('projects');return false;">Tiếp theo: Hành trình →</a></p>
-  </footer>
-</div>
-
-<!-- ══════════════════════════════════════
-     PAGE 3 — HÀNH TRÌNH HỌC TẬP
-══════════════════════════════════════ -->
-<div class="page" id="page-projects">
-  <div class="projects-wrap">
-
-    <p class="section-eyebrow">&#47;&#47; 03 — hành trình học tập</p>
-    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:0;">
-      Bài tập &amp;<br><span style="color:var(--accent)">Dự án học phần</span>
-    </h2>
-
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <div class="project-num">// 01</div>
-        <h3 class="project-title">Thao tác cơ bản với tệp tin và thư mục</h3>
-        <p class="project-desc">Thực hành toàn bộ quy trình quản lý tệp trên Windows: tạo thư mục <em>ThucHanh_QuachDucThien</em>, tạo và đổi tên tệp .txt, sao chép, di chuyển, xóa thông thường và xóa vĩnh viễn (Shift+Delete), đồng thời khôi phục tệp từ Recycle Bin.</p>
-        <a class="project-link" href="pdf/Bai1.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 02</div>
-        <h3 class="project-title">Tìm kiếm và đánh giá thông tin học thuật</h3>
-        <p class="project-desc">Thu thập và đánh giá 12 tài liệu về ứng dụng Machine Learning trong An toàn thông tin từ IEEE, Elsevier, Springer và NIST. Xây dựng bộ tiêu chí đánh giá 5 chiều và tổng hợp xu hướng nghiên cứu IDS dựa trên Deep Learning giai đoạn 2020–2024.</p>
-        <a class="project-link" href="pdf/Bai2.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 03</div>
-        <h3 class="project-title">Viết Prompt hiệu quả cho các tác vụ học tập</h3>
-        <p class="project-desc">So sánh thực nghiệm 3 mức prompt trên 3 tác vụ: tóm tắt tài liệu kỹ thuật, giải thích thuật toán Quine-McCluskey và tạo bộ câu hỏi ôn tập theo thang Bloom. Đúc kết 8 nguyên tắc viết prompt: Role Prompting, Chain-of-Thought, Few-shot, Constraint Prompting.</p>
-        <a class="project-link" href="pdf/Bai3.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 04</div>
-        <h3 class="project-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
-        <p class="project-desc">Triển khai hệ sinh thái làm việc nhóm gồm 6 công cụ trong 1 tuần: GitHub Projects (Kanban + Pull Request), Google Docs (Suggesting Mode), IntelliJ IDEA (Git integration), Google Drive (phân quyền theo vai trò) và Discord/Messenger. Ghi lại thách thức và cách giải quyết.</p>
-        <a class="project-link" href="pdf/Bai4.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 05</div>
-        <h3 class="project-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</h3>
-        <p class="project-desc">Tạo infographic A3 về "AI trong Giáo dục" qua 3 giai đoạn: ChatGPT (cấu trúc) + Gemini (kiểm chứng) + Claude (giọng văn); DALL·E 3 và Stable Diffusion tạo hình ảnh; Canva AI và Adobe Firefly thiết kế layout. Thời gian giảm ~65% so với truyền thống.</p>
-        <a class="project-link" href="pdf/Bai5.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 06</div>
-        <h3 class="project-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</h3>
-        <p class="project-desc">Phân tích chính sách sử dụng AI của ĐHQGHN và thực hành viết bài luận về tác động AI đến thị trường lao động Việt Nam. Xây dựng 7 nguyên tắc cá nhân: tư duy trước–AI sau, minh bạch tuyệt đối, kiểm chứng độc lập số liệu, giữ giọng văn cá nhân.</p>
-        <a class="project-link" href="pdf/Bai6.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">// 07</div>
-        <h3 class="project-title">Phân tích tài liệu với trợ lý nghiên cứu AI</h3>
-        <p class="project-desc">Sử dụng Elicit và Consensus để hệ thống hóa 5 bài báo khoa học về ứng dụng Graphene trong pin năng lượng (Li-ion, Na-ion, siêu tụ điện). Phân tích điểm thống nhất, sự khác biệt phương pháp và hạn chế tồn tại, đề xuất hướng nghiên cứu tiếp theo.</p>
-        <a class="project-link" href="pdf/Bai7.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Xem PDF</a>
-      </div>
-
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <p>© 2025 Quách Đức Thiện</p>
-    <p>Trang 03 / 05 — <a href="#" onclick="showPage('skills');return false;">Tiếp theo: Kỹ năng →</a></p>
-  </footer>
-</div>
-
-<!-- ══════════════════════════════════════
-     PAGE 4 — KỸ NĂNG
-══════════════════════════════════════ -->
-<div class="page" id="page-skills">
-  <div class="skills-wrap">
-
-    <p class="section-eyebrow">&#47;&#47; 04 — kỹ năng</p>
-    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:0;">
-      Kỹ năng<br><span style="color:var(--accent)">đã học</span>
-    </h2>
-
-    <div class="skills-grid">
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-folder-tree"></i></div><div class="skill-title">Quản lý dữ liệu</div><div class="skill-desc">Tổ chức thư mục, quản lý tệp và dữ liệu một cách khoa học, hiệu quả.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div><div class="skill-title">Tìm kiếm học thuật</div><div class="skill-desc">Khai thác Google Scholar, IEEE, Springer và các cơ sở dữ liệu học thuật uy tín.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-brain"></i></div><div class="skill-title">Prompt Engineering</div><div class="skill-desc">Thiết kế prompt tối ưu cho học tập, nghiên cứu và sáng tạo nội dung với AI.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-users"></i></div><div class="skill-title">Làm việc nhóm</div><div class="skill-desc">Sử dụng GitHub, Google Docs, Google Drive để cộng tác hiệu quả theo workflow thực tế.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-robot"></i></div><div class="skill-title">AI Tools</div><div class="skill-desc">ChatGPT, Claude, Gemini, DALL-E, Canva AI và Adobe Firefly.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="skill-title">An toàn thông tin</div><div class="skill-desc">Hiểu các nguyên tắc bảo mật, quyền riêng tư và sử dụng AI có trách nhiệm.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div><div class="skill-title">Mạng máy tính</div><div class="skill-desc">Kiến thức nền tảng về hệ thống mạng, truyền thông dữ liệu và giao thức.</div></div>
-      <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-code"></i></div><div class="skill-title">Lập trình</div><div class="skill-desc">Java, C/C++, HTML, CSS, JavaScript cơ bản.</div></div>
-    </div>
-  </div>
-
-  <footer class="site-footer">
-    <p>© 2025 Quách Đức Thiện</p>
-    <p>Trang 04 / 05 — <a href="#" onclick="showPage('summary');return false;">Tiếp theo: Tổng kết →</a></p>
-  </footer>
-</div>
-
-<!-- ══════════════════════════════════════
-     PAGE 5 — TỔNG KẾT
-══════════════════════════════════════ -->
-<div class="page" id="page-summary">
-  <div class="summary-wrap">
-
-    <p class="section-eyebrow">&#47;&#47; 05 — tổng kết</p>
-    <h2 style="font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:0;">
-      Hành trình<br><span style="color:var(--accent)">học tập</span>
-    </h2>
-
-    <div class="summary-cards">
-      <div class="summary-card">
-        <div class="summary-emoji">💡</div>
-        <div class="summary-card-title">Kiến thức đạt được</div>
-        <div class="summary-card-desc">Nắm vững các kỹ năng số, tìm kiếm học thuật, làm việc nhóm và ứng dụng AI trong học tập.</div>
-      </div>
-      <div class="summary-card highlight">
-        <div class="summary-emoji">🚀</div>
-        <div class="summary-card-title">Thành tựu nổi bật</div>
-        <div class="summary-card-desc">Hoàn thành toàn bộ bài tập học phần, xây dựng portfolio cá nhân và ứng dụng AI hiệu quả.</div>
-      </div>
-      <div class="summary-card">
-        <div class="summary-emoji">🔧</div>
-        <div class="summary-card-title">Thách thức</div>
-        <div class="summary-card-desc">Học cách đánh giá nguồn tin, sử dụng AI có trách nhiệm và phát triển tư duy phản biện.</div>
-      </div>
-    </div>
-
-    <div class="reflection-block">
-      <h3>Cảm nhận cá nhân</h3>
-      <p>Học phần đã giúp tôi phát triển không chỉ các kỹ năng công nghệ mà cò
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
