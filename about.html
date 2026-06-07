@@ -5,128 +5,471 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giới thiệu | Quách Đức Thiện</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --green:      #1e6b4a;
+      --green-dark: #14503a;
+      --green-mid:  #2d8a60;
+      --green-pale: #e8f5ee;
+      --green-bg:   #f0f7f2;
+      --green-chip: #d4ead9;
+      --text:       #1a2e25;
+      --muted:      #5a7a65;
+      --border:     #cde3d4;
+      --white:      #ffffff;
+      --nav-h:      60px;
+      --r:          18px;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-body:  'DM Sans', sans-serif;
+      --font-mono:  'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--green-bg);
+      color: var(--text);
+      font-size: 15px; line-height: 1.65;
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h); background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; z-index: 999;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;
+      color: var(--green); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: .25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .85rem; font-weight: 500;
+      color: var(--muted); padding: 6px 14px; border-radius: 6px;
+      transition: color .2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 14px; right: 14px;
+      height: 2px; background: var(--green);
+      transform: scaleX(0); transition: transform .2s; border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a.active { color: var(--green); font-weight: 600; }
+    .nav-links a.active::after { transform: scaleX(1); }
+    .menu-btn {
+      display: none; background: none; border: none;
+      color: var(--green); font-size: 1.2rem; cursor: pointer;
+    }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 60px 52px 48px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-left { padding-right: 20px; }
+    .hero-badge {
+      display: inline-block; font-size: .72rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); background: var(--green-chip);
+      border-radius: 50px; padding: 6px 18px; margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900; line-height: .95;
+      color: var(--green); letter-spacing: -1px; margin-bottom: 22px;
+    }
+    .hero-name span { color: var(--green-mid); }
+    .hero-tagline {
+      font-size: clamp(14px, 1.5vw, 17px); font-weight: 500;
+      color: var(--text); margin-bottom: 18px; opacity: .85;
+    }
+
+    /* ── RIGHT CARD ── */
+    .card-main {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 26px;
+    }
+    .card-label {
+      font-size: .8rem; font-weight: 600; color: var(--green);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .card-label i { font-size: .85rem; }
+    .card-main p {
+      font-size: .85rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px;
+    }
+    .card-main ul {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 6px; margin: 4px 0 18px;
+    }
+    .card-main ul li {
+      font-size: .83rem; color: var(--muted);
+      padding-left: 16px; position: relative; line-height: 1.6;
+    }
+    .card-main ul li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--green); font-size: 1rem; line-height: 1.4;
+    }
+    .card-section-title {
+      font-family: var(--font-serif); font-size: 1rem; font-weight: 700;
+      color: var(--green); margin-bottom: 14px;
+      padding-top: 20px; border-top: 1px solid var(--border); margin-top: 20px;
+    }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 9px 0; border-bottom: 1px solid var(--border); gap: 12px;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: .78rem; color: var(--muted); flex-shrink: 0; }
+    .info-value { font-size: .82rem; font-weight: 600; color: var(--text); text-align: right; }
+    .info-value.email {
+      font-family: var(--font-mono); font-size: .72rem; color: var(--green-mid);
+    }
+
+    /* ── CONTENT AREA ── */
+    .content-area {
+      padding: 0 52px 72px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section-label {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    /* ── CARDS ROW ── */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 32px;
+    }
+    .detail-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 26px 24px;
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .detail-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .detail-card:hover {
+      border-color: var(--green); transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,107,74,.12);
+    }
+    .detail-card:hover::after { transform: scaleX(1); }
+    .detail-card h3 {
+      font-family: var(--font-serif); font-size: .98rem; font-weight: 700;
+      color: var(--green); margin-bottom: 14px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    .detail-card p {
+      font-size: .83rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px;
+    }
+    .detail-card p:last-child { margin-bottom: 0; }
+    .detail-card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .detail-card ul li {
+      font-size: .82rem; color: var(--muted);
+      padding-left: 16px; position: relative; line-height: 1.6;
+    }
+    .detail-card ul li::before {
+      content: '›'; position: absolute; left: 0;
+      color: var(--green); font-size: 1rem; line-height: 1.4;
+    }
+
+    /* info mini grid inside card */
+    .info-mini-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    .info-mini-item .lbl {
+      font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 5px;
+    }
+    .info-mini-item .val {
+      font-weight: 600; font-size: .85rem; color: var(--text); word-break: break-all;
+    }
+
+    /* ── HOBBY CARDS ── */
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .hobby-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 18px 16px;
+      display: flex; align-items: center; gap: 14px;
+      transition: all .25s;
+    }
+    .hobby-card:hover {
+      border-color: var(--green); transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(30,107,74,.1);
+    }
+    .hobby-emoji { font-size: 1.8rem; flex-shrink: 0; }
+    .hobby-title { font-size: .88rem; font-weight: 600; color: var(--green); margin-bottom: 3px; }
+    .hobby-desc { font-size: .75rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── NAV CARDS ── */
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 48px;
+    }
+    .nav-card {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 22px; background: var(--white);
+      border: 1px solid var(--border); border-radius: 14px;
+      text-decoration: none; transition: all .25s;
+      position: relative; overflow: hidden;
+    }
+    .nav-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--green);
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .nav-card:hover {
+      border-color: var(--green); transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(30,107,74,.12);
+    }
+    .nav-card:hover::after { transform: scaleX(1); }
+    .nav-card-num {
+      font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+      color: var(--green); opacity: .2; flex-shrink: 0;
+    }
+    .nav-card-label { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .nav-card-sub { font-size: .72rem; color: var(--muted); }
+    .nav-card-arrow {
+      margin-left: auto; color: var(--muted); font-size: .85rem;
+      transition: color .2s, transform .2s;
+    }
+    .nav-card:hover .nav-card-arrow { color: var(--green); transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 52px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .5rem; background: var(--white);
+    }
+    .site-footer p { font-size: .78rem; color: var(--muted); }
+    .site-footer a { color: var(--green); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: .08s; }
+    .reveal.d2 { transition-delay: .16s; }
+    .reveal.d3 { transition-delay: .24s; }
+    .reveal.d4 { transition-delay: .32s; }
+    .reveal.d5 { transition-delay: .40s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge   { animation: fadeUp .5s .05s both; }
+    .hero-name    { animation: fadeUp .6s .12s both; }
+    .hero-tagline { animation: fadeUp .5s .22s both; }
+    .card-main    { animation: fadeUp .5s .20s both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding-right: 0; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 0 20px; }
+      .nav-links {
+        display: none; position: absolute; top: var(--nav-h); left: 0; right: 0;
+        flex-direction: column; background: var(--white);
+        border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .9rem 20px; border-bottom: 1px solid var(--border); border-radius: 0; }
+      .nav-links a.active::after { display: none; }
+      .nav-links a.active { border-left: 3px solid var(--green); }
+      .menu-btn { display: block; }
+      .hero { padding: 36px 20px 32px; gap: 24px; }
+      .content-area { padding: 0 20px 56px; }
+      .site-footer { padding: 1.25rem 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a class="topbar-logo" href="index.html">Quách Đức Thiện</a>
-</div>
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">Quách Đức Thiện</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Trang chủ</a></li>
+    <li><a href="about.html" class="active">Giới thiệu</a></li>
+    <li><a href="projects.html">Hành trình</a></li>
+    <li><a href="skills.html">Kỹ năng</a></li>
+    <li><a href="summary.html">Tổng kết</a></li>
+  </ul>
+  <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</nav>
 
-<div class="content-wrap">
+<div class="page-wrap">
 
-  <p class="section-eyebrow reveal">// 02 — về tôi</p>
-  <h1 class="section-title reveal d1">Giới thiệu<br><span>bản thân</span></h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-badge">// 02 — Về tôi</span>
+      <h1 class="hero-name">Giới thiệu<br><span>bản thân</span></h1>
+      <p class="hero-tagline">Sinh viên ngành Mạng máy tính và Truyền thông dữ liệu</p>
+    </div>
 
-  <div class="about-grid">
+    <!-- Right card: Học vấn & Định hướng -->
+    <div class="card-main">
+      <div class="card-label"><i class="fa-solid fa-graduation-cap"></i> Học vấn &amp; Định hướng</div>
+      <p>
+        Tôi hiện đang theo học ngành
+        <strong style="color:var(--green)">Mạng máy tính và Truyền thông dữ liệu</strong>
+        tại Trường Đại học Công Nghệ – ĐHQGHN.
+      </p>
+      <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
+      <ul>
+        <li>Thiết kế và quản trị hệ thống mạng</li>
+        <li>An toàn thông tin và bảo mật</li>
+        <li>Điện toán đám mây</li>
+        <li>AI và ứng dụng công nghệ số</li>
+      </ul>
 
-    <!-- LEFT -->
-    <div class="about-card-stack">
-
-      <div class="card reveal d2">
-        <h3>Học vấn &amp; Định hướng</h3>
-        <p>
-          Tôi hiện đang theo học ngành
-          <strong style="color:var(--green)">Mạng máy tính và Truyền thông dữ liệu</strong>
-          tại Trường Đại học Công Nghệ – ĐHQGHN.
-        </p>
-        <p>Trong quá trình học tập, tôi đặc biệt quan tâm đến:</p>
-        <ul>
-          <li>Thiết kế và quản trị hệ thống mạng</li>
-          <li>An toàn thông tin và bảo mật</li>
-          <li>Điện toán đám mây</li>
-          <li>AI và ứng dụng công nghệ số</li>
-        </ul>
+      <div class="card-section-title">Thông tin cá nhân</div>
+      <div class="info-row">
+        <span class="info-label">Trường</span>
+        <span class="info-value">UET – VNU</span>
       </div>
+      <div class="info-row">
+        <span class="info-label">Khóa</span>
+        <span class="info-value">K70I</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">MSSV</span>
+        <span class="info-value">25023532</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <span class="info-value email">25023532@vnu.edu.vn</span>
+      </div>
+    </div>
+  </section>
 
-      <div class="card reveal d3">
-        <h3>Mục tiêu nghề nghiệp</h3>
+  <!-- CONTENT -->
+  <div class="content-area">
+
+    <!-- Mục tiêu nghề nghiệp -->
+    <p class="section-label reveal">Mục tiêu nghề nghiệp</p>
+    <div class="cards-row">
+      <div class="detail-card reveal d1">
+        <h3><i class="fa-solid fa-bullseye" style="margin-right:8px;font-size:.9rem"></i>Mục tiêu nghề nghiệp</h3>
         <p>
           Trở thành kỹ sư công nghệ có khả năng triển khai, vận hành
           và bảo vệ các hệ thống thông tin hiện đại. Không ngừng học hỏi
           để bắt kịp nhịp độ phát triển của công nghệ toàn cầu.
         </p>
       </div>
-
-      <div class="card reveal d4" style="padding: 22px 28px;">
-        <div class="info-mini-grid">
-          <div class="info-mini-item">
-            <div class="lbl">Trường</div>
-            <div class="val">UET – VNU</div>
-          </div>
-          <div class="info-mini-item">
-            <div class="lbl">Khóa</div>
-            <div class="val">K70I</div>
-          </div>
-          <div class="info-mini-item">
-            <div class="lbl">MSSV</div>
-            <div class="val">25023532</div>
-          </div>
-          <div class="info-mini-item">
-            <div class="lbl">Email</div>
-            <div class="val">25023532@vnu.edu.vn</div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- RIGHT: hobbies -->
-    <div class="hobbies-card reveal d2">
-      <div class="hobbies-card-title">Sở thích</div>
-      <div class="hobby-list">
-        <div class="hobby-item">
-          <span class="hobby-icon">📚</span>
-          <div>
-            <div class="hobby-title">Đọc truyện</div>
-            <div class="hobby-desc">Yêu thích khám phá các thể loại truyện phong phú</div>
-          </div>
+    <!-- Sở thích -->
+    <p class="section-label reveal" style="margin-top:8px;">Sở thích</p>
+    <div class="hobby-grid">
+      <div class="hobby-card reveal d1">
+        <span class="hobby-emoji">📚</span>
+        <div>
+          <div class="hobby-title">Đọc truyện</div>
+          <div class="hobby-desc">Yêu thích khám phá các thể loại truyện phong phú</div>
         </div>
-        <div class="hobby-item">
-          <span class="hobby-icon">🎵</span>
-          <div>
-            <div class="hobby-title">Nghe nhạc</div>
-            <div class="hobby-desc">Âm nhạc giúp tôi thư giãn và tập trung hơn</div>
-          </div>
+      </div>
+      <div class="hobby-card reveal d2">
+        <span class="hobby-emoji">🎵</span>
+        <div>
+          <div class="hobby-title">Nghe nhạc</div>
+          <div class="hobby-desc">Âm nhạc giúp tôi thư giãn và tập trung hơn</div>
         </div>
-        <div class="hobby-item">
-          <span class="hobby-icon">🎮</span>
-          <div>
-            <div class="hobby-title">Chơi game</div>
-            <div class="hobby-desc">Rèn luyện tư duy chiến lược và phản xạ</div>
-          </div>
+      </div>
+      <div class="hobby-card reveal d3">
+        <span class="hobby-emoji">🎮</span>
+        <div>
+          <div class="hobby-title">Chơi game</div>
+          <div class="hobby-desc">Rèn luyện tư duy chiến lược và phản xạ</div>
         </div>
-        <div class="hobby-item">
-          <span class="hobby-icon">⚽</span>
-          <div>
-            <div class="hobby-title">Chơi thể thao</div>
-            <div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div>
-          </div>
+      </div>
+      <div class="hobby-card reveal d4">
+        <span class="hobby-emoji">⚽</span>
+        <div>
+          <div class="hobby-title">Chơi thể thao</div>
+          <div class="hobby-desc">Duy trì sức khỏe và tinh thần thoải mái</div>
         </div>
       </div>
     </div>
 
+    <!-- NAV CARDS -->
+    <p class="section-label reveal" style="margin-top:48px;">Khám phá thêm</p>
+    <div class="nav-cards">
+      <a class="nav-card reveal d1" href="index.html">
+        <div class="nav-card-num">01</div>
+        <div>
+          <div class="nav-card-label">Trang chủ</div>
+          <div class="nav-card-sub">Giới thiệu bản thân</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d2" href="projects.html">
+        <div class="nav-card-num">03</div>
+        <div>
+          <div class="nav-card-label">Hành trình</div>
+          <div class="nav-card-sub">7 bài tập học phần</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d3" href="skills.html">
+        <div class="nav-card-num">04</div>
+        <div>
+          <div class="nav-card-label">Kỹ năng</div>
+          <div class="nav-card-sub">8 kỹ năng đã học</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+      <a class="nav-card reveal d4" href="summary.html">
+        <div class="nav-card-num">05</div>
+        <div>
+          <div class="nav-card-label">Tổng kết</div>
+          <div class="nav-card-sub">Cảm nhận &amp; định hướng</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nav-card-arrow"></i>
+      </a>
+    </div>
+
   </div>
 
-  <div class="page-nav reveal">
-    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Trang chủ</a>
-    <span class="page-nav-indicator">02 / 05</span>
-    <a href="projects.html">Hành trình <i class="fa-solid fa-arrow-right"></i></a>
-  </div>
+  <footer class="site-footer">
+    <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
+    <p>UET – Đại học Quốc gia Hà Nội</p>
+  </footer>
 
 </div>
 
-<footer class="site-footer">
-  <p>© 2025 Quách Đức Thiện — <a href="mailto:25023532@vnu.edu.vn">25023532@vnu.edu.vn</a></p>
-  <p>UET – Đại học Quốc gia Hà Nội</p>
-</footer>
-
 <script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
   const obs = new IntersectionObserver(
     e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
-    { threshold: 0.08 }
+    { threshold: 0.1 }
   );
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
