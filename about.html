@@ -175,6 +175,72 @@
     }
     .detail-card p:last-child { margin-bottom: 0; }
 
+    /* Goal timeline */
+    .goal-timeline { display: flex; flex-direction: column; gap: 0; }
+    .goal-item {
+      display: flex; gap: 20px; padding-bottom: 24px; position: relative;
+    }
+    .goal-item:last-child { padding-bottom: 0; }
+    .goal-line {
+      display: flex; flex-direction: column; align-items: center; flex-shrink: 0;
+    }
+    .goal-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green-pale); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: .85rem; flex-shrink: 0;
+    }
+    .goal-dot.active {
+      background: var(--green); color: var(--white);
+    }
+    .goal-connector {
+      width: 2px; background: var(--border); flex: 1; margin-top: 6px; min-height: 20px;
+    }
+    .goal-item:last-child .goal-connector { display: none; }
+    .goal-content { flex: 1; padding-top: 6px; }
+    .goal-phase {
+      font-size: .68rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 4px;
+    }
+    .goal-title {
+      font-family: var(--font-serif); font-size: .92rem; font-weight: 700;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .goal-desc {
+      font-size: .8rem; color: var(--muted); line-height: 1.7;
+    }
+    .goal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .goal-tag {
+      font-size: .68rem; font-weight: 600;
+      background: var(--green-pale); color: var(--green-dark);
+      border: 1px solid var(--green-chip);
+      border-radius: 50px; padding: 3px 10px;
+    }
+
+    /* cap tags */
+    .cap-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .78rem; font-weight: 500;
+      padding: 7px 14px;
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border: 1px solid var(--green-chip);
+      border-radius: 50px;
+      transition: background .2s, border-color .2s;
+      cursor: default;
+    }
+    .cap-tag:hover { background: var(--green-chip); border-color: var(--green); }
+    .cap-tag i { font-size: .75rem; color: var(--green); }
+    .cap-tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    .cap-group { margin-bottom: 20px; }
+    .cap-group:last-child { margin-bottom: 0; }
+    .cap-group-label {
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+
     .hobby-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -202,30 +268,6 @@
     .site-footer p { font-size: .78rem; color: var(--muted); }
     .site-footer a { color: var(--green); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
-
-    /* ── CAPABILITY TAGS ── */
-    .cap-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: .78rem; font-weight: 500;
-      padding: 7px 14px;
-      background: var(--green-pale);
-      color: var(--green-dark);
-      border: 1px solid var(--green-chip);
-      border-radius: 50px;
-      transition: background .2s, border-color .2s;
-      cursor: default;
-    }
-    .cap-tag:hover { background: var(--green-chip); border-color: var(--green); }
-    .cap-tag i { font-size: .75rem; color: var(--green); }
-    .cap-tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-
-    .cap-group { margin-bottom: 20px; }
-    .cap-group:last-child { margin-bottom: 0; }
-    .cap-group-label {
-      font-size: .7rem; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 10px;
-    }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
@@ -302,31 +344,106 @@
         <li>Điện toán đám mây</li>
         <li>AI và ứng dụng công nghệ số</li>
       </ul>
-
     </div>
   </section>
 
   <div class="content-area">
 
-    <p class="section-label reveal">Định hướng nghề nghiệp</p>
-    <div class="cards-row">
+    <!-- ── MỤC TIÊU HƯỚNG TỚI ── -->
+    <p class="section-label reveal">Mục tiêu hướng tới</p>
+    <div class="cards-row" style="grid-template-columns:1fr;">
       <div class="detail-card reveal d1">
         <h3><i class="fa-solid fa-shield-halved" style="margin-right:8px;font-size:.9rem"></i>Chuyên viên An ninh mạng</h3>
-        <p>
-          Mục tiêu của tôi là trở thành một <strong style="color:var(--green)">Chuyên viên An ninh mạng</strong>
-          có chuyên môn sâu, đủ năng lực phát hiện, phân tích và ngăn chặn các mối đe dọa
-          trong hệ thống thông tin hiện đại.
-        </p>
-        <p>
-          Tôi định hướng đi sâu vào các lĩnh vực như kiểm thử xâm nhập (Penetration Testing),
-          phân tích mã độc, giám sát an ninh mạng (SOC) và bảo mật hạ tầng đám mây.
-          Song song đó, tôi mong muốn đạt được các chứng chỉ quốc tế như CompTIA Security+,
-          CEH hoặc OSCP trong tương lai gần.
-        </p>
-        <p>
-          Với nền tảng ngành Mạng máy tính và niềm đam mê bảo mật, tôi tin rằng đây là con đường
-          phù hợp để tôi đóng góp thực sự cho sự an toàn của hệ thống số Việt Nam.
-        </p>
+
+        <div class="goal-timeline" style="margin-top:4px;">
+
+          <div class="goal-item">
+            <div class="goal-line">
+              <div class="goal-dot active"><i class="fa-solid fa-flag"></i></div>
+              <div class="goal-connector"></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-phase">Hiện tại — Năm 1 &amp; 2</div>
+              <div class="goal-title">Xây dựng nền tảng vững chắc</div>
+              <div class="goal-desc">
+                Hoàn thiện kiến thức lập trình (Python, C/C++), nắm vững
+                nguyên lý mạng TCP/IP, giao thức và hệ điều hành Linux.
+                Đồng thời rèn luyện kỹ năng tư duy phân tích và giải quyết vấn đề.
+              </div>
+              <div class="goal-tags">
+                <span class="goal-tag">Python</span>
+                <span class="goal-tag">Linux</span>
+                <span class="goal-tag">TCP/IP</span>
+                <span class="goal-tag">Wireshark</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-line">
+              <div class="goal-dot"><i class="fa-solid fa-lock"></i></div>
+              <div class="goal-connector"></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-phase">Ngắn hạn — Năm 3</div>
+              <div class="goal-title">Chuyên sâu An ninh mạng &amp; Chứng chỉ quốc tế</div>
+              <div class="goal-desc">
+                Học chuyên sâu về kiểm thử xâm nhập (Penetration Testing),
+                phân tích mã độc và giám sát SOC. Mục tiêu đạt chứng chỉ
+                <strong style="color:var(--green)">CompTIA Security+</strong> và
+                <strong style="color:var(--green)">CEH</strong>.
+              </div>
+              <div class="goal-tags">
+                <span class="goal-tag">CompTIA Security+</span>
+                <span class="goal-tag">CEH</span>
+                <span class="goal-tag">Penetration Testing</span>
+                <span class="goal-tag">SOC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-line">
+              <div class="goal-dot"><i class="fa-solid fa-cloud"></i></div>
+              <div class="goal-connector"></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-phase">Trung hạn — Năm 4 &amp; Sau tốt nghiệp</div>
+              <div class="goal-title">Bảo mật đám mây &amp; Nghiên cứu nâng cao</div>
+              <div class="goal-desc">
+                Mở rộng sang bảo mật hạ tầng đám mây (AWS/Azure Security),
+                phát triển khả năng phân tích mối đe dọa nâng cao (Threat Intelligence)
+                và hướng tới chứng chỉ <strong style="color:var(--green)">OSCP</strong>.
+              </div>
+              <div class="goal-tags">
+                <span class="goal-tag">OSCP</span>
+                <span class="goal-tag">Cloud Security</span>
+                <span class="goal-tag">Threat Intelligence</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-line">
+              <div class="goal-dot"><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-phase">Dài hạn — Sự nghiệp</div>
+              <div class="goal-title">Đóng góp cho an toàn thông tin Việt Nam</div>
+              <div class="goal-desc">
+                Làm việc tại các tổ chức hoặc doanh nghiệp bảo mật uy tín,
+                đóng góp xây dựng hệ sinh thái an ninh mạng Việt Nam —
+                nơi mà con người và hệ thống số đều được bảo vệ tốt hơn.
+              </div>
+              <div class="goal-tags">
+                <span class="goal-tag">Security Engineer</span>
+                <span class="goal-tag">Red Team</span>
+                <span class="goal-tag">Blue Team</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
